@@ -1,0 +1,2250 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    #search {
+      background-image: url('/css/searchicon.png');
+      /* Add a search icon to input */
+      background-position: 10px 12px;
+      /* Position the search icon */
+      background-repeat: no-repeat;
+      /* Do not repeat the icon image */
+      width: 25%;
+      /* Full-width */
+      font-size: 16px;
+      /* Increase font-size */
+      padding: 12px 20px 12px 40px;
+      /* Add some padding */
+      border: 1px solid #ddd;
+      /* Add a grey border */
+      margin-bottom: 12px;
+      /* Add some space below the input */
+    }
+
+    #acnh-villagers {
+      border-collapse: collapse;
+      /* Collapse borders */
+      width: 100%;
+      /* Full-width */
+      border: 1px solid #ddd;
+      /* Add a grey border */
+      font-size: 18px;
+      /* Increase font-size */
+    }
+
+    #acnh-villagers th,
+    #acnh-villagers td {
+      text-align: left;
+      /* Left-align text */
+      padding: 12px;
+      /* Add padding */
+    }
+
+    #acnh-villagers tr {
+      /* Add a bottom border to all table rows */
+      border-bottom: 1px solid #ddd;
+
+    }
+
+    #acnh-villagers tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    #acnh-villagers tr.header,
+    #acnh-villagers tr:hover {
+      /* Add a grey background color to the table header and on hover */
+      background-color: #909090;
+    }
+  </style>
+
+  <script>
+    function searchFunction() {
+      // Declare variables
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("search");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("acnh-villagers");
+      tr = table.getElementsByTagName("tr");
+
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+  </script>
+  <script>
+    function save() {
+      var checkbox = document.getElementById('katt');
+      localStorage.setItem('katt', checkbox.checked);
+      var checkbox = document.getElementById('midge');
+      localStorage.setItem('midge', checkbox.checked);
+      var checkbox = document.getElementById('cranston');
+      localStorage.setItem('cranston', checkbox.checked);
+    }
+  </script>
+  <script>
+    function load() {
+      var checked = JSON.parse(localStorage.getItem('katt'));
+      document.getElementById('katt').checked = checked;
+      var checked = JSON.parse(localStorage.getItem('midge'));
+      document.getElementById('midge').checked = checked;
+      var checked = JSON.parse(localStorage.getItem('cranston'));
+      document.getElementById('cranston').checked = checked;
+    }
+  </script>
+  <script>
+    function del() {
+      location.reload();
+      localStorage.clear()
+
+    }
+  </script>
+  <script>
+    function sortTable(n) {
+      var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+      table = document.getElementById("acnh-villagers");
+      switching = true;
+      // Set the sorting direction to ascending:
+      dir = "asc";
+      /* Make a loop that will continue until
+      no switching has been done: */
+      while (switching) {
+        // Start by saying: no switching is done:
+        switching = false;
+        rows = table.rows;
+        /* Loop through all table rows (except the
+        first, which contains table headers): */
+        for (i = 1; i < (rows.length - 1); i++) {
+          // Start by saying there should be no switching:
+          shouldSwitch = false;
+          /* Get the two elements you want to compare,
+          one from current row and one from the next: */
+          x = rows[i].getElementsByTagName("TD")[n];
+          y = rows[i + 1].getElementsByTagName("TD")[n];
+          /* Check if the two rows should switch place,
+          based on the direction, asc or desc: */
+          if (dir == "asc") {
+            if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+              // If so, mark as a switch and break the loop:
+              shouldSwitch = true;
+              break;
+            }
+          } else if (dir == "desc") {
+            if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+              // If so, mark as a switch and break the loop:
+              shouldSwitch = true;
+              break;
+            }
+          }
+        }
+        if (shouldSwitch) {
+          /* If a switch has been marked, make the switch
+          and mark that a switch has been done: */
+          rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+          switching = true;
+          // Each time a switch is done, increase this count by 1:
+          switchcount++;
+        } else {
+          /* If no switching has been done AND the direction is "asc",
+          set the direction to "desc" and run the while loop again. */
+          if (switchcount == 0 && dir == "asc") {
+            dir = "desc";
+            switching = true;
+          }
+        }
+      }
+    }
+  </script>
+
+</head>
+
+<body onload="load()">
+
+  <input type="text" id="search" onkeyup="searchFunction()" placeholder="Search for villagers...">
+  <input type="button" id="savebutton" value="save" onclick="save()" />
+  <input type="button" id="deletebutton" value="delete" onclick="del()" />
+
+
+  <table id="acnh-villagers">
+    <tr class="header">
+      <th>Image</th>
+      <th onclick="sortTable(1)">Name</th>
+      <th onclick="sortTable(2)">Species</th>
+      <th onclick="sortTable(3)">Personality</th>
+      <th onclick="sortTable(4)">Check</th>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Katt</td>
+      <td>Cat</td>
+      <td>Sisterly</td>
+      <td><label class="container">
+          <input type="checkbox" id="katt">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Midge</td>
+      <td>Bird</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" id="midge">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Cranston</td>
+      <td>Ostrich</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="cranston">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Marshal</td>
+      <td>Squirrel</td>
+      <td>Smug</td>
+      <td><label class="container">
+          <input type="checkbox" id="marshal">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Raymond</td>
+      <td>Cat</td>
+      <td>Smug</td>
+      <td><label class="container">
+          <input type="checkbox" id="raymond">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Sherb</td>
+      <td>Goat</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="sherb">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Julian</td>
+      <td>Horse</td>
+      <td>Smug</td>
+      <td><label class="container">
+          <input type="checkbox" id="julian">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Pietro</td>
+      <td>Sheep</td>
+      <td>Smug</td>
+      <td><label class="container">
+          <input type="checkbox" id="pietro">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Zell</td>
+      <td>Deer</td>
+      <td>Smug</td>
+      <td><label class="container">
+          <input type="checkbox" id="zeel">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Shep</td>
+      <td>Dog</td>
+      <td>Smug</td>
+      <td><label class="container">
+          <input type="checkbox" id="shep">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Kyle</td>
+      <td>Wolf</td>
+      <td>Smug</td>
+      <td><label class="container">
+          <input type="checkbox" id="kyle">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Lopze</td>
+      <td>Deer</td>
+      <td>Smug</td>
+      <td><label class="container">
+          <input type="checkbox" id="lopez">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Eugene</td>
+      <td>Koala</td>
+      <td>Smug</td>
+      <td><label class="container">
+          <input type="checkbox" id="eugene">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Kidd</td>
+      <td>Goat</td>
+      <td>Smug</td>
+      <td><label class="container">
+          <input type="checkbox" id="kidd">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Henry</td>
+      <td>Frog</td>
+      <td>Smug</td>
+      <td><label class="container">
+          <input type="checkbox" id="henry">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Rodney</td>
+      <td>Hamster</td>
+      <td>Smug</td>
+      <td><label class="container">
+          <input type="checkbox" id="rodney">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Jacques</td>
+      <td>Bird</td>
+      <td>Smug</td>
+      <td><label class="container">
+          <input type="checkbox" id="jacques">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Phil</td>
+      <td>Ostrich</td>
+      <td>Smug</td>
+      <td><label class="container">
+          <input type="checkbox" id="phil">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Beardo</td>
+      <td>Bear</td>
+      <td>Smug</td>
+      <td><label class="container">
+          <input type="checkbox" id="beardo">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Colton</td>
+      <td>Horse</td>
+      <td>Smug</td>
+      <td><label class="container">
+          <input type="checkbox" id="colton">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Chadder</td>
+      <td>Mouse</td>
+      <td>Smug</td>
+      <td><label class="container">
+          <input type="checkbox" id="chadder">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Tex</td>
+      <td>Penguin</td>
+      <td>Smug</td>
+      <td><label class="container">
+          <input type="checkbox" id="tex">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Klaus</td>
+      <td>Bear</td>
+      <td>Smug</td>
+      <td><label class="container">
+          <input type="checkbox" id="klaus">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>O'Hare</td>
+      <td>Rabbit</td>
+      <td>Smug</td>
+      <td><label class="container">
+          <input type="checkbox" id="ohare">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Ken</td>
+      <td>Chicken</td>
+      <td>Smug</td>
+      <td><label class="container">
+          <input type="checkbox" id="ken">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Graham</td>
+      <td>Hamster</td>
+      <td>Smug</td>
+      <td><label class="container">
+          <input type="checkbox" id="graham">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Hans</td>
+      <td>Gorilla</td>
+      <td>Smug</td>
+      <td><label class="container">
+          <input type="checkbox" id="hans">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Olaf</td>
+      <td>Anteater</td>
+      <td>Smug</td>
+      <td><label class="container">
+          <input type="checkbox" id="olaf">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Keaton</td>
+      <td>Eagle</td>
+      <td>Smug</td>
+      <td><label class="container">
+          <input type="checkbox" id="keaton">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Quillson</td>
+      <td>Duck</td>
+      <td>Smug</td>
+      <td><label class="container">
+          <input type="checkbox" id="quillson">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Lionel</td>
+      <td>Lion</td>
+      <td>Smug</td>
+      <td><label class="container">
+          <input type="checkbox" id="lionel">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Curlos</td>
+      <td>Sheep</td>
+      <td>Smug</td>
+      <td><label class="container">
+          <input type="checkbox" id="curlos">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Ed</td>
+      <td>Horse</td>
+      <td>Smug</td>
+      <td><label class="container">
+          <input type="checkbox" id="ed">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Leopold</td>
+      <td>Lion</td>
+      <td>Smug</td>
+      <td><label class="container">
+          <input type="checkbox" id="leopold">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Huck</td>
+      <td>Frog</td>
+      <td>Smug</td>
+      <td><label class="container">
+          <input type="checkbox" id="huck">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Lucha</td>
+      <td>Bird</td>
+      <td>Smug</td>
+      <td><label class="container">
+          <input type="checkbox" id="lucha">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Chops</td>
+      <td>Pig</td>
+      <td>Smug</td>
+      <td><label class="container">
+          <input type="checkbox" id="chops">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Hippeux</td>
+      <td>Hippo</td>
+      <td>Smug</td>
+      <td><label class="container">
+          <input type="checkbox" id="hippeux">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Zucker</td>
+      <td>Octopus</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="zucker">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Stitches</td>
+      <td>Bearcub</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="stitches">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Beau</td>
+      <td>Deer</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="beau">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Bob</td>
+      <td>Cat</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="bob">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Lucky</td>
+      <td>Dog</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="lucky">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Erik</td>
+      <td>Deer</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="erik">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Filbert</td>
+      <td>Squirrel</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="filbert">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Clay</td>
+      <td>Hamster</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="clay">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Punchy</td>
+      <td>Cat</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="punchy">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Bones</td>
+      <td>Dog</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="bones">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Hornsby</td>
+      <td>Rhino</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="hornsby">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Biskit</td>
+      <td>Dog</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="biskit">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Barold</td>
+      <td>Bearcub</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="barold">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Ozzie</td>
+      <td>Koala</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="ozzie">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Drago</td>
+      <td>Alligator</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="drago">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Papi</td>
+      <td>Horse</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="papi">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Chester</td>
+      <td>Bearcub</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="chester">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Wade</td>
+      <td>Penguin</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="wade">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Alfonso</td>
+      <td>Alligator</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="alfonso">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Cube</td>
+      <td>Penguin</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="cube">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Jeremiah</td>
+      <td>Frog</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="jeremiah">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Dizzy</td>
+      <td>Elephant</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="dizzy">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Walker</td>
+      <td>Dog</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="walker">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Joey</td>
+      <td>Duck</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="joey">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Boomer</td>
+      <td>Penguin</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="boomer">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Raddle</td>
+      <td>Frog</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="raddle">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Moe</td>
+      <td>Cat</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="moe">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Deli</td>
+      <td>Monkey</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="deli">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Rodeo</td>
+      <td>Bull</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="rodeo">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Anchovy</td>
+      <td>bird</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="anchovy">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Marcel</td>
+      <td>Dog</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="marcel">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Cole</td>
+      <td>Rabbit</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="cole">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Hugh</td>
+      <td>Pig</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="hugh">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Benjamin</td>
+      <td>Dog</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="benjamin">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Egbert</td>
+      <td>Chicken</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="egbert">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Weber</td>
+      <td>Duck</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="weber">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Broccolo</td>
+      <td>Mouse</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="broccolo">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Stu</td>
+      <td>Bull</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="stu">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Rex</td>
+      <td>Lion</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="rex">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Drake</td>
+      <td>Duck</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="drake">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Prince</td>
+      <td>Frog</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="prince">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Jacob</td>
+      <td>Bird</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="jacob">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Big Top</td>
+      <td>Elephant</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="bigtop">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Al</td>
+      <td>Gorilla</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="al">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Nate</td>
+      <td>Bear</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="nate">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Pudge</td>
+      <td>Bearcub</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="pudge">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Hopkins</td>
+      <td>Rabbit</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="hopkins">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Benedict</td>
+      <td>Chicken</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="benedict">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Elmer</td>
+      <td>Horse</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="elmer">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Doc</td>
+      <td>Rabbit</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="doc">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Derwin</td>
+      <td>Duck</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="derwin">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Puck</td>
+      <td>Penguin</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="puck">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Crackle</td>
+      <td>Pig</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="crackle">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Tucker</td>
+      <td>Elephant</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="tucker">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Claude</td>
+      <td>Rabbit</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="claude">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Simon</td>
+      <td>Monkey</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="simon">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Paolo</td>
+      <td>Elephant</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="paolo">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Clyde</td>
+      <td>Horse</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="clyde">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Dom</td>
+      <td>Sheep</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="dom">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Roald</td>
+      <td>Penguin</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="roald">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Genji</td>
+      <td>Rabbit</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="genji">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Bam</td>
+      <td>Deer</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="bam">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Kid Cat</td>
+      <td>Cat</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="kidcat">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Hamlet</td>
+      <td>Hamster</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="hamlet">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Rudy</td>
+      <td>Cat</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="rudy">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Snake</td>
+      <td>Rabbit</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="snake">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Lyman</td>
+      <td>Koala</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="lyman">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Scoot</td>
+      <td>Duck</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="scoot">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Antonio</td>
+      <td>Anteater</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="antonio">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Teddy</td>
+      <td>Bear</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="teddy">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Sprocket</td>
+      <td>Ostrich</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="sprocket">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Bill</td>
+      <td>Duck</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="bill">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Poncho</td>
+      <td>Bearcub</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="poncho">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Biff</td>
+      <td>Hippo</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="biff">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Ribbot</td>
+      <td>Frog</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="ribbot">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Billy</td>
+      <td>Goat</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="billy">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Axel</td>
+      <td>Elephant</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="axel">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Tank</td>
+      <td>Rhino</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="tank">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Stinky</td>
+      <td>Cat</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="stinky">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Mac</td>
+      <td>Dog</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="mac">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Jitters</td>
+      <td>Bird</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="jitters">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Sterling</td>
+      <td>Eagle</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="sterling">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Rod</td>
+      <td>Mouse</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="rod">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Rowan</td>
+      <td>Tiger</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="rowan">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Boone</td>
+      <td>Gorilla</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="boone">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Jay</td>
+      <td>Bird</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="jay">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Tybalt</td>
+      <td>Tiger</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="tybalt">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Tad</td>
+      <td>Frog</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="tad">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Flip</td>
+      <td>Monkey</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="flip">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Coach</td>
+      <td>Bull</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="coach">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Buck</td>
+      <td>Horse</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="buck">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Iggly</td>
+      <td>Penguin</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="iggly">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Kevin</td>
+      <td>Pig</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="kevin">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Sheldon</td>
+      <td>Squirrel</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="sheldon">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Boots</td>
+      <td>Alligator</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="boots">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Pierce</td>
+      <td>Eagle</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="pierce">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Bud</td>
+      <td>Lion</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="bud">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Cobb</td>
+      <td>Pig</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="cobb">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Frobert</td>
+      <td>Frog</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="frobert">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Goose</td>
+      <td>Chicken</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="goose">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Sly</td>
+      <td>Alligator</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="sly">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Cousteau</td>
+      <td>Frog</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="cousteau">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Drift</td>
+      <td>Frog</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="drift">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Curly</td>
+      <td>Pig</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="curly">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Leonardo</td>
+      <td>Tiger</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="leonardo">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Sparro</td>
+      <td>Bird</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="sparro">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Mott</td>
+      <td>Lion</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="mott">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Samson</td>
+      <td>Mouse</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="samson">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Rory</td>
+      <td>Lion</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="rory">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Louie</td>
+      <td>Gorilla</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="louie">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Kody</td>
+      <td>Bearcub</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="kody">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Peck</td>
+      <td>Bird</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="peck">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Moose</td>
+      <td>Mouse</td>
+      <td>Jock</td>
+      <td><label class="container">
+          <input type="checkbox" id="moose">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Apollo</td>
+      <td>Eagle</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="apollo">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Octavian</td>
+      <td>Octopus</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="octavian">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Fang</td>
+      <td>Wolf</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="fang">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Dobie</td>
+      <td>Wolf</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="dobie">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Kabuki</td>
+      <td>Cat</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="kabuki">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Wolfgang</td>
+      <td>Wolf</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="wolfgang">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Static</td>
+      <td>Squirrel</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="static">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Roscoe</td>
+      <td>Horse</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="roscoe">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Chief</td>
+      <td>Wolf</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="chief">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Bruce</td>
+      <td>Deer</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="bruce">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Lobo</td>
+      <td>Wolf</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="lobo">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Butch</td>
+      <td>Dog</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="butch">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Walt</td>
+      <td>Kangaroo</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="walt">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Admiral</td>
+      <td>Bird</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="admiral">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Cyd</td>
+      <td>Elephant</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="cyd">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Gaston</td>
+      <td>Rabbit</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="gaston">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Rolf</td>
+      <td>Tiger</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="rolf">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Camofrog</td>
+      <td>Frog</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="camofrog">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Murphy</td>
+      <td>Bearcub</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="murphy">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Elvis</td>
+      <td>Lion</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="elvis">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Grizzly</td>
+      <td>Bear</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="grizzly">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Hopper</td>
+      <td>Penguin</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="hopper">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Gonzo</td>
+      <td>Koala</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="gonzo">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Hamphrey</td>
+      <td>Hamster</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="hamphrey">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Avery</td>
+      <td>Eagle</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="avery">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Wart Jr</td>
+      <td>Frog</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="wartjr">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Vladimir</td>
+      <td>Bearcub</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="vladimir">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Spike</td>
+      <td>Rhino</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="spike">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Knox</td>
+      <td>Chicken</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="knox">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Del</td>
+      <td>Alligator</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="del">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Curt</td>
+      <td>Bear</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="curt">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Tom</td>
+      <td>Cat</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="tom">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Groucho</td>
+      <td>Bear</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="groucho">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Rasher</td>
+      <td>Pig</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="rasher">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Angus</td>
+      <td>Bull</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="angus">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Harry</td>
+      <td>Hippo</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="harry">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Cyrano</td>
+      <td>Anteater</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="cyrano">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Rocco</td>
+      <td>Hippo</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="rocco">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Rizzo</td>
+      <td>Mouse</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="rizzo">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Buzz</td>
+      <td>Eagle</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="buzz">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Gruff</td>
+      <td>Goat</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="gruff">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Croque</td>
+      <td>Frog</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="croque">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Ike</td>
+      <td>Bear</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="ike">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Vic</td>
+      <td>Bull</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="vic">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Boyd</td>
+      <td>Gorilla</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="boyd">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Ricky</td>
+      <td>Squirrel</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="ricky">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Limberg</td>
+      <td>Mouse</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="limberg">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Chow</td>
+      <td>Bear</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="chow">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Peewee</td>
+      <td>Gorilla</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="peewee">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Rooney</td>
+      <td>Kangaroo</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="rooney">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Monty</td>
+      <td>Monkey</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="monty">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Frank</td>
+      <td>Eagle</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="frank">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>T-Bone</td>
+      <td>Bull</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="tbone">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Boris</td>
+      <td>Pig</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="boris">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Cesar</td>
+      <td>Gorilla</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="cesar">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+
+  </table>
+
+</body>
+
+</html>
