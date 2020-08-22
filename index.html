@@ -58,6 +58,7 @@
     }
   </style>
 
+  <!-- Search -->
   <script>
     function searchFunction() {
       // Declare variables
@@ -81,29 +82,31 @@
       }
     }
   </script>
-<script>
+  <!-- Save/Load -->
+  <script>
     function save() {
- 
-    var boxes = document.querySelectorAll("input[type='checkbox']");
-    for (var i = 0; i < boxes.length; i++) {
+
+      var boxes = document.querySelectorAll("input[type='checkbox']");
+      for (var i = 0; i < boxes.length; i++) {
         var box = boxes[i];
         if (box.hasAttribute("id")) {
-            setupBox(box);
+          setupBox(box);
         }
-    }
-   
-    function setupBox(box) {
+      }
+
+      function setupBox(box) {
         var storageId = box.getAttribute("id");
-        var oldVal    = localStorage.getItem(storageId);
-        console.log(oldVal);
+        var oldVal = localStorage.getItem(storageId);
+        // console.log(oldVal);
         box.checked = oldVal === "true" ? true : false;
-       
+
         box.addEventListener("change", function() {
-            localStorage.setItem(storageId, this.checked);
+          localStorage.setItem(storageId, this.checked);
         });
+      }
     }
-}
   </script>
+  <!-- Delete/Restart -->
   <script>
     function del() {
       location.reload();
@@ -111,6 +114,7 @@
 
     }
   </script>
+  <!-- Sort Table -->
   <script>
     function sortTable(n) {
       var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
@@ -167,13 +171,40 @@
       }
     }
   </script>
+  <!-- Found/Total update -->
+  <script>
+    document.onclick = function calculate() {
+
+      var total = document.getElementById("acnh-villagers").rows.length;
+      total = total - 1;
+      //document.getElementById("total").innerHTML = total;
+      var checkedBoxes = document.querySelectorAll("input:checked");
+      //document.getElementById("checkedBoxes").innerHTML = checkedBoxes.length;
+      document.getElementById("counter").innerHTML = "Found: " + checkedBoxes.length + " / Total: " + total;
+    }
+  </script>
+  <!-- Found/Total start-->
+  <script>
+    function calculate() {
+
+      var total = document.getElementById("acnh-villagers").rows.length;
+      total = total - 1;
+      //document.getElementById("total").innerHTML = total;
+      var checkedBoxes = document.querySelectorAll("input:checked");
+      //document.getElementById("checkedBoxes").innerHTML = checkedBoxes.length;
+      document.getElementById("counter").innerHTML = "Found: " + checkedBoxes.length + " / Total: " + total;
+    }
+  </script>
 
 </head>
 
-<body onload="save()">
+<body onload="save(); calculate();">
 
-  <input type="text" id="search" onkeyup="searchFunction()" placeholder="Search for villagers...">
-  <input type="button" id="deletebutton" value="restart" onclick="del()" />
+  <span>
+    <p id="counter"></p>
+    <input type="text" id="search" onkeyup="searchFunction()" placeholder="Search for villagers...">
+    <input type="button" id="deletebutton" value="restart" onclick="del()" />
+  </span>
 
 
   <table id="acnh-villagers">
@@ -296,7 +327,7 @@
     </tr>
     <tr>
       <td></td>
-      <td>Lopze</td>
+      <td>Lopez</td>
       <td>Deer</td>
       <td>Smug</td>
       <td><label class="container">
@@ -857,7 +888,7 @@
     <tr>
       <td></td>
       <td>Anchovy</td>
-      <td>bird</td>
+      <td>Bird</td>
       <td>Lazy</td>
       <td><label class="container">
           <input type="checkbox" id="anchovy">
@@ -3861,16 +3892,6 @@
       <td>Snooty</td>
       <td><label class="container">
           <input type="checkbox" id="snooty">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Snooty</td>
-      <td><label class="container">
-          <input type="checkbox" id="">
           <span class="checkmark"></span>
         </label></td>
     </tr>
