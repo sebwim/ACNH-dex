@@ -3,8 +3,8 @@ An Animal Crossing: New Horizons Villager Dex to track which villagers you have 
 
 
 To-Do:
-- Add images in the table for all villagers
-- Sort the table alphabetically
+- Add images in the table for all villagers = DONE
+- Sort the table alphabetically = STARTED
 - Add a button to hide/unhide seen villagers
 - Update the search to be able to search by personality and species as well as name
 - Make the site look a little nicer
