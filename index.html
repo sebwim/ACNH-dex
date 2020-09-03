@@ -201,7 +201,23 @@
       document.getElementById("counter").innerHTML = "Found: " + checkedBoxes.length + " / Total: " + total;
     }
   </script>
+  <!-- Hide function -->
+  <script>
+    function hideChecked() {
+      var table = document.getElementById("acnh-villagers");
+      var rows = table.getElementsByTagName("tr");
 
+      for (var i = 0; i < rows.length; i++) {
+        var checked = rows[i].getElementsByTagName("input");
+        for (var j = 0; j < checked.length; j++) {
+          if (checked.checked) {
+            rows[i].style.display = "none";
+          }
+          break;
+        }
+      }
+    }
+  </script>
 </head>
 
 <body onload="save(); calculate();">
@@ -210,6 +226,9 @@
     <p id="counter"></p>
     <input type="text" id="search" onkeyup="searchFunction()" placeholder="Search for villagers...">
     <input type="button" id="deletebutton" value="restart" onclick="del()" />
+    <!-- Hide button... not working yet...
+    <input type="button" value="Hide" onclick="hideChecked();" />
+  -->
   </span>
 
 
@@ -288,6 +307,16 @@
       <td>Cranky</td>
       <td><label class="container">
           <input type="checkbox" id="apollo">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/aurora.png" alt="Aurora"></td>
+      <td>Aurora</td>
+      <td>Penguin</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" id="aurora">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -472,6 +501,26 @@
         </label></td>
     </tr>
     <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/boris.png" alt="Boris"></td>
+      <td>Boris</td>
+      <td>Pig</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="boris">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/boyd.png" alt="Boyd"></td>
+      <td>Boyd</td>
+      <td>Gorilla</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="boyd">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
       <td class="thumbnail"><img src="/ACNH-dex/images/bree.png" alt="Bree"></td>
       <td>Bree</td>
       <td>Mouse</td>
@@ -532,12 +581,32 @@
         </label></td>
     </tr>
     <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/buzz.png" alt="Buzz"></td>
+      <td>Buzz</td>
+      <td>Eagle</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="buzz">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
       <td class="thumbnail"><img src="/ACNH-dex/images/camofrog.png" alt="Camofrog"></td>
       <td>Camofrog</td>
       <td>Frog</td>
       <td>Cranky</td>
       <td><label class="container">
           <input type="checkbox" id="camofrog">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/cesar.png" alt="Cesar"></td>
+      <td>Cesar</td>
+      <td>Gorilla</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="cesar">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -578,6 +647,16 @@
       <td>Smug</td>
       <td><label class="container">
           <input type="checkbox" id="chops">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/chow.png" alt="Chow"></td>
+      <td>Chow</td>
+      <td>Bear</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="chow">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -632,6 +711,16 @@
         </label></td>
     </tr>
     <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/coco.png" alt="Coco"></td>
+      <td>Coco</td>
+      <td>Rabbit</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" id="coco">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
       <td class="thumbnail"><img src="/ACNH-dex/images/cole.png" alt="Cole"></td>
       <td>Cole</td>
       <td>Rabbit</td>
@@ -682,6 +771,16 @@
         </label></td>
     </tr>
     <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/croque.png" alt="Croque"></td>
+      <td>Croque</td>
+      <td>Frog</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="croque">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
       <td class="thumbnail"><img src="/ACNH-dex/images/cube.png" alt="Cube"></td>
       <td>Cube</td>
       <td>Penguin</td>
@@ -728,6 +827,16 @@
       <td>Cranky</td>
       <td><label class="container">
           <input type="checkbox" id="cyd">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/cyrano.png" alt="Cyrano"></td>
+      <td>Cyrano</td>
+      <td>Anteater</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="cyrano">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -902,6 +1011,16 @@
         </label></td>
     </tr>
     <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/fauna.png" alt="Fauna"></td>
+      <td>Fauna</td>
+      <td>Deer</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" id="fauna">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
       <td class="thumbnail"><img src="/ACNH-dex/images/filbert.png" alt="Filbert"></td>
       <td>Filbert</td>
       <td>Squirrel</td>
@@ -918,6 +1037,26 @@
       <td>Jock</td>
       <td><label class="container">
           <input type="checkbox" id="flip">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/flurry.png" alt="Flurry"></td>
+      <td>Flurry</td>
+      <td>Hamster</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" id="flurry">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/frank.png" alt="Frank"></td>
+      <td>Frank</td>
+      <td>Eagle</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="frank">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -948,6 +1087,16 @@
       <td>Jock</td>
       <td><label class="container">
           <input type="checkbox" id="genji">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/goldie.png" alt="Goldie"></td>
+      <td>Goldie</td>
+      <td>Dog</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" id="goldie">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1002,6 +1151,16 @@
         </label></td>
     </tr>
     <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/gruff.png" alt="Gruff"></td>
+      <td>Gruff</td>
+      <td>Goat</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="gruff">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
       <td class="thumbnail"><img src="/ACNH-dex/images/hamlet.png" alt="Hamlet"></td>
       <td>Hamlet</td>
       <td>Hamster</td>
@@ -1028,6 +1187,16 @@
       <td>Smug</td>
       <td><label class="container">
           <input type="checkbox" id="hans">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/harry.png" alt="Harry"></td>
+      <td>Harry</td>
+      <td>Hippo</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="harry">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1108,6 +1277,16 @@
       <td>Jock</td>
       <td><label class="container">
           <input type="checkbox" id="iggly">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/ike.png" alt="Ike"></td>
+      <td>Ike</td>
+      <td>Bear</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="ike">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1252,6 +1431,16 @@
         </label></td>
     </tr>
     <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/kiki.png" alt="Kiki"></td>
+      <td>Kiki</td>
+      <td>Cat</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" id="kiki">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
       <td class="thumbnail"><img src="/ACNH-dex/images/klaus.png" alt="Klaus"></td>
       <td>Klaus</td>
       <td>Bear</td>
@@ -1312,6 +1501,26 @@
         </label></td>
     </tr>
     <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/lily.png" alt="Lily"></td>
+      <td>Lily</td>
+      <td>Frog</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" id="lily">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/limberg.png" alt="Limberg"></td>
+      <td>Limberg</td>
+      <td>Mouse</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="limberg">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
       <td class="thumbnail"><img src="/ACNH-dex/images/lionel.png" alt="Lionel"></td>
       <td>Lionel</td>
       <td>Lion</td>
@@ -1328,6 +1537,16 @@
       <td>Cranky</td>
       <td><label class="container">
           <input type="checkbox" id="lobo">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/lolly.png" alt="Lolly"></td>
+      <td>Lolly</td>
+      <td>Cat</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" id="lolly">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1392,6 +1611,16 @@
         </label></td>
     </tr>
     <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/maple.png" alt="Maple"></td>
+      <td>Maple</td>
+      <td>Bearcub</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" id="maple">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
       <td class="thumbnail"><img src="/ACNH-dex/images/marcel.png" alt="Marcel"></td>
       <td>Marcel</td>
       <td>Dog</td>
@@ -1402,12 +1631,42 @@
         </label></td>
     </tr>
     <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/marina.png" alt="Marina"></td>
+      <td>Marina</td>
+      <td>Octopus</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" id="marina">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
       <td class="thumbnail"><img src="/ACNH-dex/images/marshal.png" alt="Marshal"></td>
       <td>Marshal</td>
       <td>Squirrel</td>
       <td>Smug</td>
       <td><label class="container">
           <input type="checkbox" id="marshal">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/melba.png" alt="Melba"></td>
+      <td>Melba</td>
+      <td>Koala</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" id="melba">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/merengue.png" alt="Merengue"></td>
+      <td>Merengue</td>
+      <td>Rhino</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" id="merengue">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1428,6 +1687,26 @@
       <td>Lazy</td>
       <td><label class="container">
           <input type="checkbox" id="moe">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/molly.png" alt="Molly"></td>
+      <td>Molly</td>
+      <td>Duck</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" id="molly">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/monty.png" alt="Monty"></td>
+      <td>Monty</td>
+      <td>Monkey</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="monty">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1472,6 +1751,16 @@
         </label></td>
     </tr>
     <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/octavian.png" alt="Octavian"></td>
+      <td>Octavian</td>
+      <td>Octopus</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="octavian">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
       <td class="thumbnail"><img src="/ACNH-dex/images/ohare.png" alt="O'Hare"></td>
       <td>O'Hare</td>
       <td>Rabbit</td>
@@ -1488,6 +1777,16 @@
       <td>Smug</td>
       <td><label class="container">
           <input type="checkbox" id="olaf">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/ozzie.png" alt="Ozzie"></td>
+      <td>Ozzie</td>
+      <td>Koala</td>
+      <td>Lazy</td>
+      <td><label class="container">
+          <input type="checkbox" id="ozzie">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1518,6 +1817,26 @@
       <td>Jock</td>
       <td><label class="container">
           <input type="checkbox" id="peck">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/peewee.png" alt="Peewee"></td>
+      <td>Peewee</td>
+      <td>Gorilla</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="peewee">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/pekoe.png" alt="Pekoe"></td>
+      <td>Pekoe</td>
+      <td>Bearcub</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" id="pekoe">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1562,6 +1881,16 @@
         </label></td>
     </tr>
     <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/poppy.png" alt="Poppy"></td>
+      <td>Poppy</td>
+      <td>Squirrel</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" id="poppy">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
       <td class="thumbnail"><img src="/ACNH-dex/images/prince.png" alt="Prince"></td>
       <td>Prince</td>
       <td>Frog</td>
@@ -1598,26 +1927,6 @@
       <td>Lazy</td>
       <td><label class="container">
           <input type="checkbox" id="punchy">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/octavian.png" alt="Octavian"></td>
-      <td>Octavian</td>
-      <td>Octopus</td>
-      <td>Cranky</td>
-      <td><label class="container">
-          <input type="checkbox" id="octavian">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/ozzie.png" alt="Ozzie"></td>
-      <td>Ozzie</td>
-      <td>Koala</td>
-      <td>Lazy</td>
-      <td><label class="container">
-          <input type="checkbox" id="ozzie">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1682,12 +1991,42 @@
         </label></td>
     </tr>
     <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/ricky.png" alt="Ricky"></td>
+      <td>Ricky</td>
+      <td>Squirrel</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="ricky">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/rizzo.png" alt="Rizzo"></td>
+      <td>Rizzo</td>
+      <td>Mouse</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="rizzo">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
       <td class="thumbnail"><img src="/ACNH-dex/images/roald.png" alt="Roald"></td>
       <td>Roald</td>
       <td>Penguin</td>
       <td>Jock</td>
       <td><label class="container">
           <input type="checkbox" id="roald">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/rocco.png" alt="Rocco"></td>
+      <td>Rocco</td>
+      <td>Hippo</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="rocco">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1728,6 +2067,16 @@
       <td>Cranky</td>
       <td><label class="container">
           <input type="checkbox" id="rolf">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/rooney.png" alt="Rooney"></td>
+      <td>Rooney</td>
+      <td>Kangaroo</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="rooney">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1828,6 +2177,16 @@
       <td>Lazy</td>
       <td><label class="container">
           <input type="checkbox" id="simon">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/skye.png" alt="Skye"></td>
+      <td>Skye</td>
+      <td>Wolf</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" id="skye">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1952,6 +2311,16 @@
         </label></td>
     </tr>
     <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/t-bone.png" alt="T-Bone"></td>
+      <td>T-Bone</td>
+      <td>Bull</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="tbone">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
       <td class="thumbnail"><img src="/ACNH-dex/images/teddy.png" alt="Teddy"></td>
       <td>Teddy</td>
       <td>Bear</td>
@@ -1968,6 +2337,16 @@
       <td>Smug</td>
       <td><label class="container">
           <input type="checkbox" id="tex">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/tia.png" alt="Tia"></td>
+      <td>Tia</td>
+      <td>Elephant</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" id="tia">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1998,6 +2377,16 @@
       <td>Jock</td>
       <td><label class="container">
           <input type="checkbox" id="tybalt">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/vic.png" alt="Vic"></td>
+      <td>Vic</td>
+      <td>Bull</td>
+      <td>Cranky</td>
+      <td><label class="container">
+          <input type="checkbox" id="vic">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2084,376 +2473,6 @@
 
     <!-- not sorted yet -->
 
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/harry.png" alt="Harry"></td>
-      <td>Harry</td>
-      <td>Hippo</td>
-      <td>Cranky</td>
-      <td><label class="container">
-          <input type="checkbox" id="harry">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/cyrano.png" alt="Cyrano"></td>
-      <td>Cyrano</td>
-      <td>Anteater</td>
-      <td>Cranky</td>
-      <td><label class="container">
-          <input type="checkbox" id="cyrano">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/rocco.png" alt="Rocco"></td>
-      <td>Rocco</td>
-      <td>Hippo</td>
-      <td>Cranky</td>
-      <td><label class="container">
-          <input type="checkbox" id="rocco">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/rizzo.png" alt="Rizzo"></td>
-      <td>Rizzo</td>
-      <td>Mouse</td>
-      <td>Cranky</td>
-      <td><label class="container">
-          <input type="checkbox" id="rizzo">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/buzz.png" alt="Buzz"></td>
-      <td>Buzz</td>
-      <td>Eagle</td>
-      <td>Cranky</td>
-      <td><label class="container">
-          <input type="checkbox" id="buzz">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/gruff.png" alt="Gruff"></td>
-      <td>Gruff</td>
-      <td>Goat</td>
-      <td>Cranky</td>
-      <td><label class="container">
-          <input type="checkbox" id="gruff">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/croque.png" alt="Croque"></td>
-      <td>Croque</td>
-      <td>Frog</td>
-      <td>Cranky</td>
-      <td><label class="container">
-          <input type="checkbox" id="croque">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/ike.png" alt="Ike"></td>
-      <td>Ike</td>
-      <td>Bear</td>
-      <td>Cranky</td>
-      <td><label class="container">
-          <input type="checkbox" id="ike">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/vic.png" alt="Vic"></td>
-      <td>Vic</td>
-      <td>Bull</td>
-      <td>Cranky</td>
-      <td><label class="container">
-          <input type="checkbox" id="vic">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/boyd.png" alt="Boyd"></td>
-      <td>Boyd</td>
-      <td>Gorilla</td>
-      <td>Cranky</td>
-      <td><label class="container">
-          <input type="checkbox" id="boyd">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/ricky.png" alt="Ricky"></td>
-      <td>Ricky</td>
-      <td>Squirrel</td>
-      <td>Cranky</td>
-      <td><label class="container">
-          <input type="checkbox" id="ricky">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/limberg.png" alt="Limberg"></td>
-      <td>Limberg</td>
-      <td>Mouse</td>
-      <td>Cranky</td>
-      <td><label class="container">
-          <input type="checkbox" id="limberg">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/chow.png" alt="Chow"></td>
-      <td>Chow</td>
-      <td>Bear</td>
-      <td>Cranky</td>
-      <td><label class="container">
-          <input type="checkbox" id="chow">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/peewee.png" alt="Peewee"></td>
-      <td>Peewee</td>
-      <td>Gorilla</td>
-      <td>Cranky</td>
-      <td><label class="container">
-          <input type="checkbox" id="peewee">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/rooney.png" alt="Rooney"></td>
-      <td>Rooney</td>
-      <td>Kangaroo</td>
-      <td>Cranky</td>
-      <td><label class="container">
-          <input type="checkbox" id="rooney">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/monty.png" alt="Monty"></td>
-      <td>Monty</td>
-      <td>Monkey</td>
-      <td>Cranky</td>
-      <td><label class="container">
-          <input type="checkbox" id="monty">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/frank.png" alt="Frank"></td>
-      <td>Frank</td>
-      <td>Eagle</td>
-      <td>Cranky</td>
-      <td><label class="container">
-          <input type="checkbox" id="frank">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/t-bone.png" alt="T-Bone"></td>
-      <td>T-Bone</td>
-      <td>Bull</td>
-      <td>Cranky</td>
-      <td><label class="container">
-          <input type="checkbox" id="tbone">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/boris.png" alt="Boris"></td>
-      <td>Boris</td>
-      <td>Pig</td>
-      <td>Cranky</td>
-      <td><label class="container">
-          <input type="checkbox" id="boris">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/cesar.png" alt="Cesar"></td>
-      <td>Cesar</td>
-      <td>Gorilla</td>
-      <td>Cranky</td>
-      <td><label class="container">
-          <input type="checkbox" id="cesar">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/merengue.png" alt="Merengue"></td>
-      <td>Merengue</td>
-      <td>Rhino</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="merengue">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/marina.png" alt="Marina"></td>
-      <td>Marina</td>
-      <td>Octopus</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="marina">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/fauna.png" alt="Fauna"></td>
-      <td>Fauna</td>
-      <td>Deer</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="fauna">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/coco.png" alt="Coco"></td>
-      <td>Coco</td>
-      <td>Rabbit</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="coco">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/molly.png" alt="Molly"></td>
-      <td>Molly</td>
-      <td>Duck</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="molly">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/lolly.png" alt="Lolly"></td>
-      <td>Lolly</td>
-      <td>Cat</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="lolly">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/maple.png" alt="Maple"></td>
-      <td>Maple</td>
-      <td>Bearcub</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="maple">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/poppy.png" alt="Poppy"></td>
-      <td>Poppy</td>
-      <td>Squirrel</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="poppy">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/tia.png" alt="Tia"></td>
-      <td>Tia</td>
-      <td>Elephant</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="tia">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/goldie.png" alt="Goldie"></td>
-      <td>Goldie</td>
-      <td>Dog</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="goldie">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/skye.png" alt="Skye"></td>
-      <td>Skye</td>
-      <td>Wolf</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="skye">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/aurora.png" alt="Aurora"></td>
-      <td>Aurora</td>
-      <td>Penguin</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="aurora">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/melba.png" alt="Melba"></td>
-      <td>Melba</td>
-      <td>Koala</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="melba">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/pekoe.png" alt="Pekoe"></td>
-      <td>Pekoe</td>
-      <td>Bearcub</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="pekoe">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/flurry.png" alt="Flurry"></td>
-      <td>Flurry</td>
-      <td>Hamster</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="flurry">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/kiki.png" alt="Kiki"></td>
-      <td>Kiki</td>
-      <td>Cat</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="kiki">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/lily.png" alt="Lily"></td>
-      <td>Lily</td>
-      <td>Frog</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="lily">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
     <tr>
       <td class="thumbnail"><img src="/ACNH-dex/images/chevre.png" alt="Chevre"></td>
       <td>Chevre</td>
