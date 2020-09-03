@@ -10,3 +10,4 @@ To-Do:
 - Make the site look a little nicer
 - Add more information about villagers (birthday, initial catchphrase)
 - Add checkboxes in the table for: Villager in town, seen on campsite, received picture.
+- Find a better Search icon
