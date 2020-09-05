@@ -203,19 +203,48 @@
   </script>
   <!-- Hide function -->
   <script>
-    function hideChecked() {
-      var table = document.getElementById("acnh-villagers");
-      var rows = table.getElementsByTagName("tr");
+    /*  function hideChecked() {
+      var hideTable = document.getElementById("acnh-villagers");
+      var hideRows = hideTable.getElementsByTagName("tr");
 
-      for (var i = 0; i < rows.length; i++) {
-        var checked = rows[i].getElementsByTagName("input");
-        for (var j = 0; j < checked.length; j++) {
-          if (checked.checked) {
-            rows[i].style.display = "none";
+      for (var i = 0; i < hideRows.length; i++) {
+        var hideCheckboxes = hideRows[i].getElementsByTagName("input");
+        for (var j = 0; j < hideCheckboxes.length; j++) {
+          if (hideCheckboxes.checked) {
+            hideRows[i].style.display = "none";
           }
           break;
         }
       }
+    } */
+    function hideSelected() {
+      var oTable = document.getElementById("acnh-villagers");
+      var oRows = oTable.getElementsByTagName("tr");
+
+      for (var i = 0; i < oRows.length; i++) {
+        var oInputs = oRows[i].getElementsByTagName("input");
+        for (var j = 0; j < oInputs.length; j++) {
+          if (oInputs[j].name == "showHide") {
+            if (oInputs[j].checked) {
+              oRows[i].style.display = "none";
+            }
+            break;
+          }
+        }
+      }
+
+    }
+
+    function showAll() {
+      var oTable = document.getElementById("acnh-villagers");
+      var oRows = oTable.getElementsByTagName("tr");
+
+      for (var i = 0; i < oRows.length; i++) {
+        if (oRows[i].style.display == "none") {
+          oRows[i].style.display = "";
+        }
+      }
+
     }
   </script>
 </head>
@@ -226,9 +255,8 @@
     <p id="counter"></p>
     <input type="text" id="search" onkeyup="searchFunction()" placeholder="Search for villagers...">
     <input type="button" id="deletebutton" value="restart" onclick="del()" />
-    <input type="button" value="Hide" onclick="hideChecked();" />
+    <input type="button" value="Hide checked" onclick="hideSelected();" /><input type="button" value="Show All" onclick="showAll();" />
   </span>
-
 
   <table id="acnh-villagers">
     <tr class="header">
@@ -244,7 +272,7 @@
       <td>Bird</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="admiral">
+          <input type="checkbox" name="showHide" id="admiral">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -254,7 +282,7 @@
       <td>Gorilla</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="al">
+          <input type="checkbox" name="showHide" id="al">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -264,7 +292,7 @@
       <td>Alligator</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="alfonso">
+          <input type="checkbox" name="showHide" id="alfonso">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -274,7 +302,7 @@
       <td>Koala</td>
       <td>Normal</td>
       <td><label class="container">
-          <input type="checkbox" id="alice">
+          <input type="checkbox" name="showHide" id="alice">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -284,7 +312,7 @@
       <td>Bird</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="anchovy">
+          <input type="checkbox" name="showHide" id="anchovy">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -294,7 +322,17 @@
       <td>Bull</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="angus">
+          <input type="checkbox" name="showHide" id="angus">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/annalisa.png" alt="Annalisa"></td>
+      <td>Annalisa</td>
+      <td>Anteater</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="annalisa">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -304,7 +342,7 @@
       <td>Anteater</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="antonio">
+          <input type="checkbox" name="showHide" id="antonio">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -314,7 +352,17 @@
       <td>Eagle</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="apollo">
+          <input type="checkbox" name="showHide" id="apollo">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/audie.png" alt="Audie"></td>
+      <td>Audie</td>
+      <td>Wolf</td>
+      <td>Peppy</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="audie">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -324,7 +372,17 @@
       <td>Penguin</td>
       <td>Normal</td>
       <td><label class="container">
-          <input type="checkbox" id="aurora">
+          <input type="checkbox" name="showHide" id="aurora">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/ava.png" alt="Ava"></td>
+      <td>Ava</td>
+      <td>Chicken</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="ava">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -334,7 +392,7 @@
       <td>Eagle</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="avery">
+          <input type="checkbox" name="showHide" id="avery">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -344,7 +402,7 @@
       <td>Elephant</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="axel">
+          <input type="checkbox" name="showHide" id="axel">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -354,7 +412,7 @@
       <td>Deer</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="bam">
+          <input type="checkbox" name="showHide" id="bam">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -364,7 +422,7 @@
       <td>Bearcub</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="barold">
+          <input type="checkbox" name="showHide" id="barold">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -374,7 +432,7 @@
       <td>Dog</td>
       <td>Normal</td>
       <td><label class="container">
-          <input type="checkbox" id="bea">
+          <input type="checkbox" name="showHide" id="bea">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -384,7 +442,7 @@
       <td>Bear</td>
       <td>Smug</td>
       <td><label class="container">
-          <input type="checkbox" id="beardo">
+          <input type="checkbox" name="showHide" id="beardo">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -394,7 +452,7 @@
       <td>Deer</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="beau">
+          <input type="checkbox" name="showHide" id="beau">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -404,7 +462,7 @@
       <td>Chicken</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="benedict">
+          <input type="checkbox" name="showHide" id="benedict">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -414,7 +472,27 @@
       <td>Dog</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="benjamin">
+          <input type="checkbox" name="showHide" id="benjamin">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/bertha.png" alt="Bertha"></td>
+      <td>Bertha</td>
+      <td>Hippo</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="bertha">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/bettina.png" alt="Bettina"></td>
+      <td>Bettina</td>
+      <td>Mouse</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="bettina">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -424,7 +502,7 @@
       <td>Hippo</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="biff">
+          <input type="checkbox" name="showHide" id="biff">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -434,7 +512,7 @@
       <td>Elephant</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="bigtop">
+          <input type="checkbox" name="showHide" id="bigtop">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -444,7 +522,7 @@
       <td>Duck</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="bill">
+          <input type="checkbox" name="showHide" id="bill">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -454,7 +532,7 @@
       <td>Goat</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="billy">
+          <input type="checkbox" name="showHide" id="billy">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -464,7 +542,7 @@
       <td>Dog</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="biskit">
+          <input type="checkbox" name="showHide" id="biskit">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -474,7 +552,7 @@
       <td>Cat</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="bob">
+          <input type="checkbox" name="showHide" id="bob">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -484,7 +562,7 @@
       <td>Dog</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="bones">
+          <input type="checkbox" name="showHide" id="bones">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -494,7 +572,7 @@
       <td>Penguin</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="boomer">
+          <input type="checkbox" name="showHide" id="boomer">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -504,7 +582,7 @@
       <td>Gorilla</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="boone">
+          <input type="checkbox" name="showHide" id="boone">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -514,7 +592,7 @@
       <td>Alligator</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="boots">
+          <input type="checkbox" name="showHide" id="boots">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -524,7 +602,7 @@
       <td>Pig</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="boris">
+          <input type="checkbox" name="showHide" id="boris">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -534,7 +612,7 @@
       <td>Gorilla</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="boyd">
+          <input type="checkbox" name="showHide" id="boyd">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -544,7 +622,7 @@
       <td>Mouse</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="bree">
+          <input type="checkbox" name="showHide" id="bree">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -554,7 +632,7 @@
       <td>Mouse</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="broccolo">
+          <input type="checkbox" name="showHide" id="broccolo">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -564,7 +642,7 @@
       <td>Deer</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="bruce">
+          <input type="checkbox" name="showHide" id="bruce">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -574,7 +652,7 @@
       <td>Horse</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="buck">
+          <input type="checkbox" name="showHide" id="buck">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -584,7 +662,7 @@
       <td>Lion</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="bud">
+          <input type="checkbox" name="showHide" id="bud">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -594,7 +672,7 @@
       <td>Dog</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="butch">
+          <input type="checkbox" name="showHide" id="butch">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -604,7 +682,17 @@
       <td>Eagle</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="buzz">
+          <input type="checkbox" name="showHide" id="buzz">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/cally.png" alt="Cally"></td>
+      <td>Cally</td>
+      <td>Squirrel</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="cally">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -614,7 +702,37 @@
       <td>Frog</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="camofrog">
+          <input type="checkbox" name="showHide" id="camofrog">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/caroline.png" alt="Caroline"></td>
+      <td>Caroline</td>
+      <td>Squirrel</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="caroline">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/carrie.png" alt="Carrie"></td>
+      <td>Carrie</td>
+      <td>Kangaroo</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="carrie">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/celia.png" alt="Celia"></td>
+      <td>Celia</td>
+      <td>Eagle</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="celia">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -624,7 +742,7 @@
       <td>Gorilla</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="cesar">
+          <input type="checkbox" name="showHide" id="cesar">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -634,7 +752,7 @@
       <td>Mouse</td>
       <td>Smug</td>
       <td><label class="container">
-          <input type="checkbox" id="chadder">
+          <input type="checkbox" name="showHide" id="chadder">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -644,7 +762,7 @@
       <td>Bearcub</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="chester">
+          <input type="checkbox" name="showHide" id="chester">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -654,7 +772,7 @@
       <td>Goat</td>
       <td>Normal</td>
       <td><label class="container">
-          <input type="checkbox" id="chevre">
+          <input type="checkbox" name="showHide" id="chevre">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -664,7 +782,7 @@
       <td>Wolf</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="chief">
+          <input type="checkbox" name="showHide" id="chief">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -674,7 +792,7 @@
       <td>Pig</td>
       <td>Smug</td>
       <td><label class="container">
-          <input type="checkbox" id="chops">
+          <input type="checkbox" name="showHide" id="chops">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -684,7 +802,7 @@
       <td>Bear</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="chow">
+          <input type="checkbox" name="showHide" id="chow">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -694,7 +812,7 @@
       <td>Rabbit</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="claude">
+          <input type="checkbox" name="showHide" id="claude">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -704,7 +822,7 @@
       <td>Hamster</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="clay">
+          <input type="checkbox" name="showHide" id="clay">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -714,7 +832,7 @@
       <td>Horse</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="clyde">
+          <input type="checkbox" name="showHide" id="clyde">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -724,7 +842,7 @@
       <td>Bull</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="coach">
+          <input type="checkbox" name="showHide" id="coach">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -734,7 +852,7 @@
       <td>Pig</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="cobb">
+          <input type="checkbox" name="showHide" id="cobb">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -744,7 +862,7 @@
       <td>Rabbit</td>
       <td>Normal</td>
       <td><label class="container">
-          <input type="checkbox" id="coco">
+          <input type="checkbox" name="showHide" id="coco">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -754,7 +872,7 @@
       <td>Rabbit</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="cole">
+          <input type="checkbox" name="showHide" id="cole">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -764,7 +882,7 @@
       <td>Horse</td>
       <td>Smug</td>
       <td><label class="container">
-          <input type="checkbox" id="colton">
+          <input type="checkbox" name="showHide" id="colton">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -774,7 +892,7 @@
       <td>Frog</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="cousteau">
+          <input type="checkbox" name="showHide" id="cousteau">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -784,7 +902,7 @@
       <td>Pig</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="crackle">
+          <input type="checkbox" name="showHide" id="crackle">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -794,7 +912,7 @@
       <td>Ostrich</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="cranston">
+          <input type="checkbox" name="showHide" id="cranston">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -804,7 +922,7 @@
       <td>Frog</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="croque">
+          <input type="checkbox" name="showHide" id="croque">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -814,7 +932,7 @@
       <td>Penguin</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="cube">
+          <input type="checkbox" name="showHide" id="cube">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -824,7 +942,7 @@
       <td>Sheep</td>
       <td>Smug</td>
       <td><label class="container">
-          <input type="checkbox" id="curlos">
+          <input type="checkbox" name="showHide" id="curlos">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -834,7 +952,7 @@
       <td>Pig</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="curly">
+          <input type="checkbox" name="showHide" id="curly">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -844,7 +962,7 @@
       <td>Bear</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="curt">
+          <input type="checkbox" name="showHide" id="curt">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -854,7 +972,7 @@
       <td>Elephant</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="cyd">
+          <input type="checkbox" name="showHide" id="cyd">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -864,7 +982,7 @@
       <td>Anteater</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="cyrano">
+          <input type="checkbox" name="showHide" id="cyrano">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -874,7 +992,17 @@
       <td>Dog</td>
       <td>Normal</td>
       <td><label class="container">
-          <input type="checkbox" id="daisy">
+          <input type="checkbox" name="showHide" id="daisy">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/deena.png" alt="Deena"></td>
+      <td>Deena</td>
+      <td>Duck</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="deena">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -884,7 +1012,7 @@
       <td>Alligator</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="del">
+          <input type="checkbox" name="showHide" id="del">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -894,7 +1022,7 @@
       <td>Monkey</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="deli">
+          <input type="checkbox" name="showHide" id="deli">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -904,7 +1032,7 @@
       <td>Duck</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="derwin">
+          <input type="checkbox" name="showHide" id="derwin">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -914,7 +1042,7 @@
       <td>Elephant</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="dizzy">
+          <input type="checkbox" name="showHide" id="dizzy">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -924,7 +1052,7 @@
       <td>Wolf</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="dobie">
+          <input type="checkbox" name="showHide" id="dobie">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -934,7 +1062,7 @@
       <td>Rabbit</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="doc">
+          <input type="checkbox" name="showHide" id="doc">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -944,7 +1072,17 @@
       <td>Sheep</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="dom">
+          <input type="checkbox" name="showHide" id="dom">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/dora.png" alt="Dora"></td>
+      <td>Dora</td>
+      <td>Mouse</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="dora">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -954,7 +1092,7 @@
       <td>Alligator</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="drago">
+          <input type="checkbox" name="showHide" id="drago">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -964,7 +1102,7 @@
       <td>Duck</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="drake">
+          <input type="checkbox" name="showHide" id="drake">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -974,7 +1112,7 @@
       <td>Frog</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="drift">
+          <input type="checkbox" name="showHide" id="drift">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -984,7 +1122,7 @@
       <td>Horse</td>
       <td>Smug</td>
       <td><label class="container">
-          <input type="checkbox" id="ed">
+          <input type="checkbox" name="showHide" id="ed">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -994,7 +1132,7 @@
       <td>Chicken</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="egbert">
+          <input type="checkbox" name="showHide" id="egbert">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1004,7 +1142,7 @@
       <td>Elephant</td>
       <td>Normal</td>
       <td><label class="container">
-          <input type="checkbox" id="ellie">
+          <input type="checkbox" name="showHide" id="ellie">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1014,7 +1152,7 @@
       <td>Horse</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="elmer">
+          <input type="checkbox" name="showHide" id="elmer">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1024,7 +1162,7 @@
       <td>Lion</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="elvis">
+          <input type="checkbox" name="showHide" id="elvis">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1034,7 +1172,7 @@
       <td>Deer</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="erik">
+          <input type="checkbox" name="showHide" id="erik">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1044,7 +1182,17 @@
       <td>Koala</td>
       <td>Smug</td>
       <td><label class="container">
-          <input type="checkbox" id="eugene">
+          <input type="checkbox" name="showHide" id="eugene">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/eunice.png" alt="Eunice"></td>
+      <td>Eunice</td>
+      <td>Sheep</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="eunice">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1054,7 +1202,7 @@
       <td>Wolf</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="fang">
+          <input type="checkbox" name="showHide" id="fang">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1064,7 +1212,7 @@
       <td>Deer</td>
       <td>Normal</td>
       <td><label class="container">
-          <input type="checkbox" id="fauna">
+          <input type="checkbox" name="showHide" id="fauna">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1074,7 +1222,7 @@
       <td>Squirrel</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="filbert">
+          <input type="checkbox" name="showHide" id="filbert">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1084,7 +1232,7 @@
       <td>Monkey</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="flip">
+          <input type="checkbox" name="showHide" id="flip">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1094,7 +1242,7 @@
       <td>Hamster</td>
       <td>Normal</td>
       <td><label class="container">
-          <input type="checkbox" id="flurry">
+          <input type="checkbox" name="showHide" id="flurry">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1104,7 +1252,7 @@
       <td>Eagle</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="frank">
+          <input type="checkbox" name="showHide" id="frank">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1114,7 +1262,17 @@
       <td>Frog</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="frobert">
+          <input type="checkbox" name="showHide" id="frobert">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/gala.png" alt="Gala"></td>
+      <td>Gala</td>
+      <td>Pig</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="gala">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1124,7 +1282,7 @@
       <td>Rabbit</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="gaston">
+          <input type="checkbox" name="showHide" id="gaston">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1134,7 +1292,7 @@
       <td>Alligator</td>
       <td>Normal</td>
       <td><label class="container">
-          <input type="checkbox" id="gayle">
+          <input type="checkbox" name="showHide" id="gayle">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1144,7 +1302,17 @@
       <td>Rabbit</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="genji">
+          <input type="checkbox" name="showHide" id="genji">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/gladys.png" alt="Gladys"></td>
+      <td>Gladys</td>
+      <td>Ostrich</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="gladys">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1154,7 +1322,7 @@
       <td>Dog</td>
       <td>Normal</td>
       <td><label class="container">
-          <input type="checkbox" id="goldie">
+          <input type="checkbox" name="showHide" id="goldie">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1164,7 +1332,7 @@
       <td>Koala</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="gonzo">
+          <input type="checkbox" name="showHide" id="gonzo">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1174,7 +1342,7 @@
       <td>Chicken</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="goose">
+          <input type="checkbox" name="showHide" id="goose">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1184,7 +1352,7 @@
       <td>Hamster</td>
       <td>Smug</td>
       <td><label class="container">
-          <input type="checkbox" id="graham">
+          <input type="checkbox" name="showHide" id="graham">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1194,7 +1362,7 @@
       <td>Bear</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="grizzly">
+          <input type="checkbox" name="showHide" id="grizzly">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1204,7 +1372,7 @@
       <td>Bear</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="groucho">
+          <input type="checkbox" name="showHide" id="groucho">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1214,7 +1382,7 @@
       <td>Goat</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="gruff">
+          <input type="checkbox" name="showHide" id="gruff">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1224,7 +1392,7 @@
       <td>Hamster</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="hamlet">
+          <input type="checkbox" name="showHide" id="hamlet">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1234,7 +1402,7 @@
       <td>Hamster</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="hamphrey">
+          <input type="checkbox" name="showHide" id="hamphrey">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1244,7 +1412,7 @@
       <td>Gorilla</td>
       <td>Smug</td>
       <td><label class="container">
-          <input type="checkbox" id="hans">
+          <input type="checkbox" name="showHide" id="hans">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1254,7 +1422,7 @@
       <td>Hippo</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="harry">
+          <input type="checkbox" name="showHide" id="harry">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1264,7 +1432,7 @@
       <td>Frog</td>
       <td>Smug</td>
       <td><label class="container">
-          <input type="checkbox" id="henry">
+          <input type="checkbox" name="showHide" id="henry">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1274,7 +1442,7 @@
       <td>Hippo</td>
       <td>Smug</td>
       <td><label class="container">
-          <input type="checkbox" id="hippeux">
+          <input type="checkbox" name="showHide" id="hippeux">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1284,7 +1452,7 @@
       <td>Rabbit</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="hopkins">
+          <input type="checkbox" name="showHide" id="hopkins">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1294,7 +1462,7 @@
       <td>Penguin</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="hopper">
+          <input type="checkbox" name="showHide" id="hopper">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1304,7 +1472,7 @@
       <td>Rhino</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="hornsby">
+          <input type="checkbox" name="showHide" id="hornsby">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1314,7 +1482,7 @@
       <td>Frog</td>
       <td>Smug</td>
       <td><label class="container">
-          <input type="checkbox" id="huck">
+          <input type="checkbox" name="showHide" id="huck">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1324,7 +1492,7 @@
       <td>Pig</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="hugh">
+          <input type="checkbox" name="showHide" id="hugh">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1334,7 +1502,7 @@
       <td>Penguin</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="iggly">
+          <input type="checkbox" name="showHide" id="iggly">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1344,7 +1512,7 @@
       <td>Bear</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="ike">
+          <input type="checkbox" name="showHide" id="ike">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1354,7 +1522,7 @@
       <td>Bird</td>
       <td>Smug</td>
       <td><label class="container">
-          <input type="checkbox" id="jacques">
+          <input type="checkbox" name="showHide" id="jacques">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1364,7 +1532,17 @@
       <td>Bird</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="jacob">
+          <input type="checkbox" name="showHide" id="jacob">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/jambette.png" alt="Jambette"></td>
+      <td>Jambette</td>
+      <td>Frog</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="jambette">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1374,7 +1552,7 @@
       <td>Bird</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="jay">
+          <input type="checkbox" name="showHide" id="jay">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1384,7 +1562,7 @@
       <td>Frog</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="jeremiah">
+          <input type="checkbox" name="showHide" id="jeremiah">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1394,7 +1572,7 @@
       <td>Bird</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="jitters">
+          <input type="checkbox" name="showHide" id="jitters">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1404,7 +1582,7 @@
       <td>Duck</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="joey">
+          <input type="checkbox" name="showHide" id="joey">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1414,7 +1592,7 @@
       <td>Horse</td>
       <td>Smug</td>
       <td><label class="container">
-          <input type="checkbox" id="julian">
+          <input type="checkbox" name="showHide" id="julian">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1424,7 +1602,7 @@
       <td>Bearcub</td>
       <td>Normal</td>
       <td><label class="container">
-          <input type="checkbox" id="june">
+          <input type="checkbox" name="showHide" id="june">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1434,7 +1612,7 @@
       <td>Cat</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="kabuki">
+          <input type="checkbox" name="showHide" id="kabuki">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1444,7 +1622,7 @@
       <td>Cat</td>
       <td>Sisterly</td>
       <td><label class="container">
-          <input type="checkbox" id="katt">
+          <input type="checkbox" name="showHide" id="katt">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1454,7 +1632,7 @@
       <td>Eagle</td>
       <td>Smug</td>
       <td><label class="container">
-          <input type="checkbox" id="keaton">
+          <input type="checkbox" name="showHide" id="keaton">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1464,7 +1642,17 @@
       <td>Chicken</td>
       <td>Smug</td>
       <td><label class="container">
-          <input type="checkbox" id="ken">
+          <input type="checkbox" name="showHide" id="ken">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/ketchup.png" alt="Ketchup"></td>
+      <td>Ketchup</td>
+      <td>Duck</td>
+      <td>Peppy</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="ketchup">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1474,7 +1662,7 @@
       <td>Pig</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="kevin">
+          <input type="checkbox" name="showHide" id="kevin">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1484,7 +1672,7 @@
       <td>Cat</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="kidcat">
+          <input type="checkbox" name="showHide" id="kidcat">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1494,7 +1682,7 @@
       <td>Goat</td>
       <td>Smug</td>
       <td><label class="container">
-          <input type="checkbox" id="kidd">
+          <input type="checkbox" name="showHide" id="kidd">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1504,7 +1692,17 @@
       <td>Cat</td>
       <td>Normal</td>
       <td><label class="container">
-          <input type="checkbox" id="kiki">
+          <input type="checkbox" name="showHide" id="kiki">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/kitt.png" alt="Kitt"></td>
+      <td>Kitt</td>
+      <td>Kangaroo</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="kitt">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1514,7 +1712,7 @@
       <td>Bear</td>
       <td>Smug</td>
       <td><label class="container">
-          <input type="checkbox" id="klaus">
+          <input type="checkbox" name="showHide" id="klaus">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1524,7 +1722,7 @@
       <td>Chicken</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="knox">
+          <input type="checkbox" name="showHide" id="knox">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1534,7 +1732,7 @@
       <td>Bearcub</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="kody">
+          <input type="checkbox" name="showHide" id="kody">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1544,7 +1742,7 @@
       <td>Wolf</td>
       <td>Smug</td>
       <td><label class="container">
-          <input type="checkbox" id="kyle">
+          <input type="checkbox" name="showHide" id="kyle">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1554,7 +1752,7 @@
       <td>Tiger</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="leonardo">
+          <input type="checkbox" name="showHide" id="leonardo">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1564,7 +1762,7 @@
       <td>Lion</td>
       <td>Smug</td>
       <td><label class="container">
-          <input type="checkbox" id="leopold">
+          <input type="checkbox" name="showHide" id="leopold">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1574,7 +1772,7 @@
       <td>Frog</td>
       <td>Normal</td>
       <td><label class="container">
-          <input type="checkbox" id="lily">
+          <input type="checkbox" name="showHide" id="lily">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1584,7 +1782,7 @@
       <td>Mouse</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="limberg">
+          <input type="checkbox" name="showHide" id="limberg">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1594,7 +1792,7 @@
       <td>Lion</td>
       <td>Smug</td>
       <td><label class="container">
-          <input type="checkbox" id="lionel">
+          <input type="checkbox" name="showHide" id="lionel">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1604,7 +1802,7 @@
       <td>Wolf</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="lobo">
+          <input type="checkbox" name="showHide" id="lobo">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1614,7 +1812,7 @@
       <td>Cat</td>
       <td>Normal</td>
       <td><label class="container">
-          <input type="checkbox" id="lolly">
+          <input type="checkbox" name="showHide" id="lolly">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1624,7 +1822,7 @@
       <td>Deer</td>
       <td>Smug</td>
       <td><label class="container">
-          <input type="checkbox" id="lopez">
+          <input type="checkbox" name="showHide" id="lopez">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1634,7 +1832,7 @@
       <td>Gorilla</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="louie">
+          <input type="checkbox" name="showHide" id="louie">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1644,7 +1842,7 @@
       <td>Bird</td>
       <td>Smug</td>
       <td><label class="container">
-          <input type="checkbox" id="lucha">
+          <input type="checkbox" name="showHide" id="lucha">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1654,7 +1852,17 @@
       <td>Dog</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="lucky">
+          <input type="checkbox" name="showHide" id="lucky">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/lucy.png" alt="Lucy"></td>
+      <td>Lucy</td>
+      <td>Pig</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="lucy">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1664,7 +1872,7 @@
       <td>Koala</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="lyman">
+          <input type="checkbox" name="showHide" id="lyman">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1674,7 +1882,17 @@
       <td>Dog</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="mac">
+          <input type="checkbox" name="showHide" id="mac">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/maggie.png" alt="Maggie"></td>
+      <td>Maggie</td>
+      <td>Pig</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="maggie">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1684,7 +1902,7 @@
       <td>Bearcub</td>
       <td>Normal</td>
       <td><label class="container">
-          <input type="checkbox" id="maple">
+          <input type="checkbox" name="showHide" id="maple">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1694,7 +1912,27 @@
       <td>Dog</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="marcel">
+          <input type="checkbox" name="showHide" id="marcel">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/marcie.png" alt="Marcie"></td>
+      <td>Marcie</td>
+      <td>Kangaroo</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="marcie">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/margie.png" alt="Margie"></td>
+      <td>Margie</td>
+      <td>Elephant</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="margie">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1704,7 +1942,7 @@
       <td>Octopus</td>
       <td>Normal</td>
       <td><label class="container">
-          <input type="checkbox" id="marina">
+          <input type="checkbox" name="showHide" id="marina">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1714,7 +1952,17 @@
       <td>Squirrel</td>
       <td>Smug</td>
       <td><label class="container">
-          <input type="checkbox" id="marshal">
+          <input type="checkbox" name="showHide" id="marshal">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/megan.png" alt="Megan"></td>
+      <td>Megan</td>
+      <td>Bear</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="megan">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1724,7 +1972,7 @@
       <td>Koala</td>
       <td>Normal</td>
       <td><label class="container">
-          <input type="checkbox" id="melba">
+          <input type="checkbox" name="showHide" id="melba">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1734,7 +1982,17 @@
       <td>Rhino</td>
       <td>Normal</td>
       <td><label class="container">
-          <input type="checkbox" id="merengue">
+          <input type="checkbox" name="showHide" id="merengue">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/merry.png" alt="Merry"></td>
+      <td>Merry</td>
+      <td>Cat</td>
+      <td>Peppy</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="merry">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1744,7 +2002,7 @@
       <td>Bird</td>
       <td>Normal</td>
       <td><label class="container">
-          <input type="checkbox" id="midge">
+          <input type="checkbox" name="showHide" id="midge">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1754,7 +2012,7 @@
       <td>Cat</td>
       <td>Normal</td>
       <td><label class="container">
-          <input type="checkbox" id="mitzi">
+          <input type="checkbox" name="showHide" id="mitzi">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1764,7 +2022,7 @@
       <td>Cat</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="moe">
+          <input type="checkbox" name="showHide" id="moe">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1774,7 +2032,7 @@
       <td>Duck</td>
       <td>Normal</td>
       <td><label class="container">
-          <input type="checkbox" id="molly">
+          <input type="checkbox" name="showHide" id="molly">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1784,7 +2042,7 @@
       <td>Monkey</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="monty">
+          <input type="checkbox" name="showHide" id="monty">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1794,7 +2052,7 @@
       <td>Mouse</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="moose">
+          <input type="checkbox" name="showHide" id="moose">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1804,7 +2062,7 @@
       <td>Lion</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="mott">
+          <input type="checkbox" name="showHide" id="mott">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1814,7 +2072,7 @@
       <td>Bearcub</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="murphy">
+          <input type="checkbox" name="showHide" id="murphy">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1824,7 +2082,17 @@
       <td>Goat</td>
       <td>Normal</td>
       <td><label class="container">
-          <input type="checkbox" id="nan">
+          <input type="checkbox" name="showHide" id="nan">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/nana.png" alt="Nana"></td>
+      <td>Nana</td>
+      <td>Monkey</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="nana">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1834,7 +2102,17 @@
       <td>Bear</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="nate">
+          <input type="checkbox" name="showHide" id="nate">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/norma.png" alt="Norma"></td>
+      <td>Norma</td>
+      <td>Cow</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="norma">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1844,7 +2122,7 @@
       <td>Octopus</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="octavian">
+          <input type="checkbox" name="showHide" id="octavian">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1854,7 +2132,7 @@
       <td>Rabbit</td>
       <td>Smug</td>
       <td><label class="container">
-          <input type="checkbox" id="ohare">
+          <input type="checkbox" name="showHide" id="ohare">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1864,7 +2142,17 @@
       <td>Anteater</td>
       <td>Smug</td>
       <td><label class="container">
-          <input type="checkbox" id="olaf">
+          <input type="checkbox" name="showHide" id="olaf">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/olive.png" alt="Olive"></td>
+      <td>Olive</td>
+      <td>Bearcub</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="olive">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1874,7 +2162,7 @@
       <td>Koala</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="ozzie">
+          <input type="checkbox" name="showHide" id="ozzie">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1884,7 +2172,7 @@
       <td>Elephant</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="paolo">
+          <input type="checkbox" name="showHide" id="paolo">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1894,7 +2182,17 @@
       <td>Horse</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="papi">
+          <input type="checkbox" name="showHide" id="papi">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/peaches.png" alt="Peaches"></td>
+      <td>Peaches</td>
+      <td>Horse</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="peaches">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1904,7 +2202,7 @@
       <td>Bird</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="peck">
+          <input type="checkbox" name="showHide" id="peck">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1914,7 +2212,7 @@
       <td>Gorilla</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="peewee">
+          <input type="checkbox" name="showHide" id="peewee">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1924,7 +2222,7 @@
       <td>Bearcub</td>
       <td>Normal</td>
       <td><label class="container">
-          <input type="checkbox" id="pekoe">
+          <input type="checkbox" name="showHide" id="pekoe">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1934,7 +2232,7 @@
       <td>Ostrich</td>
       <td>Smug</td>
       <td><label class="container">
-          <input type="checkbox" id="phil">
+          <input type="checkbox" name="showHide" id="phil">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1944,7 +2242,7 @@
       <td>Eagle</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="pierce">
+          <input type="checkbox" name="showHide" id="pierce">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1954,7 +2252,7 @@
       <td>Sheep</td>
       <td>Smug</td>
       <td><label class="container">
-          <input type="checkbox" id="pietro">
+          <input type="checkbox" name="showHide" id="pietro">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1964,7 +2262,7 @@
       <td>Bearcub</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="poncho">
+          <input type="checkbox" name="showHide" id="poncho">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1974,7 +2272,7 @@
       <td>Squirrel</td>
       <td>Normal</td>
       <td><label class="container">
-          <input type="checkbox" id="poppy">
+          <input type="checkbox" name="showHide" id="poppy">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1984,7 +2282,7 @@
       <td>Frog</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="prince">
+          <input type="checkbox" name="showHide" id="prince">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -1994,7 +2292,7 @@
       <td>Penguin</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="puck">
+          <input type="checkbox" name="showHide" id="puck">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2004,7 +2302,7 @@
       <td>Bearcub</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="pudge">
+          <input type="checkbox" name="showHide" id="pudge">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2014,7 +2312,7 @@
       <td>Cat</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="punchy">
+          <input type="checkbox" name="showHide" id="punchy">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2024,7 +2322,7 @@
       <td>Duck</td>
       <td>Smug</td>
       <td><label class="container">
-          <input type="checkbox" id="quillson">
+          <input type="checkbox" name="showHide" id="quillson">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2034,7 +2332,7 @@
       <td>Frog</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="raddle">
+          <input type="checkbox" name="showHide" id="raddle">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2044,7 +2342,7 @@
       <td>Pig</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="rasher">
+          <input type="checkbox" name="showHide" id="rasher">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2054,7 +2352,7 @@
       <td>Cat</td>
       <td>Smug</td>
       <td><label class="container">
-          <input type="checkbox" id="raymond">
+          <input type="checkbox" name="showHide" id="raymond">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2064,7 +2362,17 @@
       <td>Lion</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="rex">
+          <input type="checkbox" name="showHide" id="rex">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/rhonda.png" alt="Rhonda"></td>
+      <td>Rhonda</td>
+      <td>Rhina</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="rhonda">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2074,7 +2382,7 @@
       <td>Frog</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="ribbot">
+          <input type="checkbox" name="showHide" id="ribbot">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2084,7 +2392,7 @@
       <td>Squirrel</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="ricky">
+          <input type="checkbox" name="showHide" id="ricky">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2094,7 +2402,7 @@
       <td>Mouse</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="rizzo">
+          <input type="checkbox" name="showHide" id="rizzo">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2104,7 +2412,7 @@
       <td>Penguin</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="roald">
+          <input type="checkbox" name="showHide" id="roald">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2114,7 +2422,7 @@
       <td>Hippo</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="rocco">
+          <input type="checkbox" name="showHide" id="rocco">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2124,7 +2432,7 @@
       <td>Mouse</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="rod">
+          <input type="checkbox" name="showHide" id="rod">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2134,7 +2442,7 @@
       <td>Bull</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="rodeo">
+          <input type="checkbox" name="showHide" id="rodeo">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2144,7 +2452,7 @@
       <td>Hamster</td>
       <td>Smug</td>
       <td><label class="container">
-          <input type="checkbox" id="rodney">
+          <input type="checkbox" name="showHide" id="rodney">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2154,7 +2462,7 @@
       <td>Tiger</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="rolf">
+          <input type="checkbox" name="showHide" id="rolf">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2164,7 +2472,7 @@
       <td>Kangaroo</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="rooney">
+          <input type="checkbox" name="showHide" id="rooney">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2174,7 +2482,7 @@
       <td>Lion</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="rory">
+          <input type="checkbox" name="showHide" id="rory">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2184,7 +2492,17 @@
       <td>Horse</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="roscoe">
+          <input type="checkbox" name="showHide" id="roscoe">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/rosie.png" alt="Rosie"></td>
+      <td>Rosie</td>
+      <td>Cat</td>
+      <td>Peppy</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="rosie">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2194,7 +2512,7 @@
       <td>Tiger</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="rowan">
+          <input type="checkbox" name="showHide" id="rowan">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2204,7 +2522,17 @@
       <td>Cat</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="rudy">
+          <input type="checkbox" name="showHide" id="rudy">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/sally.png" alt="Sally"></td>
+      <td>Sally</td>
+      <td>Squirrel</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="sally">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2214,7 +2542,27 @@
       <td>Mouse</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="samson">
+          <input type="checkbox" name="showHide" id="samson">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/sandy.png" alt="Sandy"></td>
+      <td>Sandy</td>
+      <td>Ostrich</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="sandy">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/savannah.png" alt="Savannah"></td>
+      <td>Savannah</td>
+      <td>Horse</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="savannah">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2224,7 +2572,7 @@
       <td>Duck</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="scoot">
+          <input type="checkbox" name="showHide" id="scoot">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2234,7 +2582,7 @@
       <td>Squirrel</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="sheldon">
+          <input type="checkbox" name="showHide" id="sheldon">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2244,7 +2592,7 @@
       <td>Dog</td>
       <td>Smug</td>
       <td><label class="container">
-          <input type="checkbox" id="shep">
+          <input type="checkbox" name="showHide" id="shep">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2254,7 +2602,7 @@
       <td>Goat</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="sherb">
+          <input type="checkbox" name="showHide" id="sherb">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2264,7 +2612,7 @@
       <td>Monkey</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="simon">
+          <input type="checkbox" name="showHide" id="simon">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2274,7 +2622,7 @@
       <td>Wolf</td>
       <td>Normal</td>
       <td><label class="container">
-          <input type="checkbox" id="skye">
+          <input type="checkbox" name="showHide" id="skye">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2284,7 +2632,7 @@
       <td>Alligator</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="sly">
+          <input type="checkbox" name="showHide" id="sly">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2294,7 +2642,7 @@
       <td>Rabbit</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="snake">
+          <input type="checkbox" name="showHide" id="snake">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2304,7 +2652,7 @@
       <td>Bird</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="sparro">
+          <input type="checkbox" name="showHide" id="sparro">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2314,7 +2662,7 @@
       <td>Rhino</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="spike">
+          <input type="checkbox" name="showHide" id="spike">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2324,7 +2672,7 @@
       <td>Ostrich</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="sprocket">
+          <input type="checkbox" name="showHide" id="sprocket">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2334,7 +2682,17 @@
       <td>Squirrel</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="static">
+          <input type="checkbox" name="showHide" id="static">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/stella.png" alt="Stella"></td>
+      <td>Stella</td>
+      <td>Sheep</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="stella">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2344,7 +2702,7 @@
       <td>Eagle</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="sterling">
+          <input type="checkbox" name="showHide" id="sterling">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2354,7 +2712,7 @@
       <td>Cat</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="stinky">
+          <input type="checkbox" name="showHide" id="stinky">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2364,7 +2722,7 @@
       <td>Bearcub</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="stitches">
+          <input type="checkbox" name="showHide" id="stitches">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2374,7 +2732,17 @@
       <td>Bull</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="stu">
+          <input type="checkbox" name="showHide" id="stu">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/sydney.png" alt="Sydney"></td>
+      <td>Sydney</td>
+      <td>Koala</td>
+      <td>Normal</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="sydney">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2384,7 +2752,7 @@
       <td>Squirrel</td>
       <td>Normal</td>
       <td><label class="container">
-          <input type="checkbox" id="sylvana">
+          <input type="checkbox" name="showHide" id="sylvana">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2394,7 +2762,17 @@
       <td>Frog</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="tad">
+          <input type="checkbox" name="showHide" id="tad">
+          <span class="checkmark"></span>
+        </label></td>
+    </tr>
+    <tr>
+      <td class="thumbnail"><img src="/ACNH-dex/images/tangy.png" alt="Tangy"></td>
+      <td>Tangy</td>
+      <td>Cat</td>
+      <td>Peppy</td>
+      <td><label class="container">
+          <input type="checkbox" name="showHide" id="tangy">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2404,7 +2782,7 @@
       <td>Rhino</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="tank">
+          <input type="checkbox" name="showHide" id="tank">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2414,7 +2792,7 @@
       <td>Bull</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="tbone">
+          <input type="checkbox" name="showHide" id="tbone">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2424,7 +2802,7 @@
       <td>Bear</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="teddy">
+          <input type="checkbox" name="showHide" id="teddy">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2434,7 +2812,7 @@
       <td>Penguin</td>
       <td>Smug</td>
       <td><label class="container">
-          <input type="checkbox" id="tex">
+          <input type="checkbox" name="showHide" id="tex">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2444,7 +2822,7 @@
       <td>Elephant</td>
       <td>Normal</td>
       <td><label class="container">
-          <input type="checkbox" id="tia">
+          <input type="checkbox" name="showHide" id="tia">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2454,7 +2832,7 @@
       <td>Cat</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="tom">
+          <input type="checkbox" name="showHide" id="tom">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2464,7 +2842,7 @@
       <td>Elephant</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="tucker">
+          <input type="checkbox" name="showHide" id="tucker">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2474,7 +2852,7 @@
       <td>Tiger</td>
       <td>Jock</td>
       <td><label class="container">
-          <input type="checkbox" id="tybalt">
+          <input type="checkbox" name="showHide" id="tybalt">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2484,7 +2862,7 @@
       <td>Sheep</td>
       <td>Normal</td>
       <td><label class="container">
-          <input type="checkbox" id="vesta">
+          <input type="checkbox" name="showHide" id="vesta">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2494,7 +2872,7 @@
       <td>Bull</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="vic">
+          <input type="checkbox" name="showHide" id="vic">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2504,7 +2882,7 @@
       <td>Bearcub</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="vladimir">
+          <input type="checkbox" name="showHide" id="vladimir">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2514,7 +2892,7 @@
       <td>Penguin</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="wade">
+          <input type="checkbox" name="showHide" id="wade">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2524,7 +2902,7 @@
       <td>Dog</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="walker">
+          <input type="checkbox" name="showHide" id="walker">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2534,7 +2912,7 @@
       <td>Kangaroo</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="walt">
+          <input type="checkbox" name="showHide" id="walt">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2544,7 +2922,7 @@
       <td>Frog</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="wartjr">
+          <input type="checkbox" name="showHide" id="wartjr">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2554,7 +2932,7 @@
       <td>Duck</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="weber">
+          <input type="checkbox" name="showHide" id="weber">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2564,7 +2942,7 @@
       <td>Wolf</td>
       <td>Cranky</td>
       <td><label class="container">
-          <input type="checkbox" id="wolfgang">
+          <input type="checkbox" name="showHide" id="wolfgang">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2574,7 +2952,7 @@
       <td>Octopus</td>
       <td>Lazy</td>
       <td><label class="container">
-          <input type="checkbox" id="zucker">
+          <input type="checkbox" name="showHide" id="zucker">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2585,369 +2963,13 @@
 
 
 
-
-
-
-
-
-
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/gala.png" alt="Gala"></td>
-      <td>Gala</td>
-      <td>Pig</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="gala">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/megan.png" alt="Megan"></td>
-      <td>Megan</td>
-      <td>Bear</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="megan">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/sydney.png" alt="Sydney"></td>
-      <td>Sydney</td>
-      <td>Koala</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="sydney">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/savannah.png" alt="Savannah"></td>
-      <td>Savannah</td>
-      <td>Horse</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="savannah">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/nana.png" alt="nana"></td>
-      <td>Nana</td>
-      <td>Monkey</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="nana">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/stella.png" alt="Stella"></td>
-      <td>Stella</td>
-      <td>Sheep</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="stella">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/margie.png" alt="Margie"></td>
-      <td>Margie</td>
-      <td>Elephant</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="margie">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/gladys.png" alt="Gladys"></td>
-      <td>Gladys</td>
-      <td>Ostrich</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="gladys">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/celia.png" alt="Celia"></td>
-      <td>Celia</td>
-      <td>Eagle</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="celia">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/bertha.png" alt="Bertha"></td>
-      <td>Bertha</td>
-      <td>Hippo</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="bertha">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/caroline.png" alt="Caroline"></td>
-      <td>Caroline</td>
-      <td>Squirrel</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="caroline">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/olive.png" alt="Olive"></td>
-      <td>Olive</td>
-      <td>Bearcub</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="olive">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/eunice.png" alt="Eunice"></td>
-      <td>Eunice</td>
-      <td>Sheep</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="eunice">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/norma.png" alt="Norma"></td>
-      <td>Norma</td>
-      <td>Cow</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="norma">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/annalisa.png" alt="Annalisa"></td>
-      <td>Annalisa</td>
-      <td>Anteater</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="annalisa">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/sally.png" alt="Sally"></td>
-      <td>Sally</td>
-      <td>Squirrel</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="sally">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/ava.png" alt="Ava"></td>
-      <td>Ava</td>
-      <td>Chicken</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="ava">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/deena.png" alt="Deena"></td>
-      <td>Deena</td>
-      <td>Duck</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="deena">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/maggie.png" alt="Maggie"></td>
-      <td>Maggie</td>
-      <td>Pig</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="maggie">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/lucy.png" alt="Lucy"></td>
-      <td>Lucy</td>
-      <td>Pig</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="lucy">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/dora.png" alt="Dora"></td>
-      <td>Dora</td>
-      <td>Mouse</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="dora">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/jambette.png" alt="Jambette"></td>
-      <td>Jambette</td>
-      <td>Frog</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="jambette">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/kitt.png" alt="Kitt"></td>
-      <td>Kitt</td>
-      <td>Kangaroo</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="kitt">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/peaches.png" alt="Peaches"></td>
-      <td>Peaches</td>
-      <td>Horse</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="peaches">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/marcie.png" alt="Marcie"></td>
-      <td>Marcie</td>
-      <td>Kangaroo</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="marcie">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/cally.png" alt="Cally"></td>
-      <td>Cally</td>
-      <td>Squirrel</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="cally">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/bettina.png" alt="Bettina"></td>
-      <td>Bettina</td>
-      <td>Mouse</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="bettina">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/sandy.png" alt="Sandy"></td>
-      <td>Sandy</td>
-      <td>Ostrich</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="sandy">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/rhonda.png" alt="Rhonda"></td>
-      <td>Rhonda</td>
-      <td>Rhina</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="rhonda">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/carrie.png" alt="Carrie"></td>
-      <td>Carrie</td>
-      <td>Kangaroo</td>
-      <td>Normal</td>
-      <td><label class="container">
-          <input type="checkbox" id="carrie">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/merry.png" alt="Merry"></td>
-      <td>Merry</td>
-      <td>Cat</td>
-      <td>Peppy</td>
-      <td><label class="container">
-          <input type="checkbox" id="merry">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/audie.png" alt="Audie"></td>
-      <td>Audie</td>
-      <td>Wolf</td>
-      <td>Peppy</td>
-      <td><label class="container">
-          <input type="checkbox" id="audie">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/ketchup.png" alt="Ketchup"></td>
-      <td>Ketchup</td>
-      <td>Duck</td>
-      <td>Peppy</td>
-      <td><label class="container">
-          <input type="checkbox" id="ketchup">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/tangy.png" alt="Tangy"></td>
-      <td>Tangy</td>
-      <td>Cat</td>
-      <td>Peppy</td>
-      <td><label class="container">
-          <input type="checkbox" id="tangy">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
-    <tr>
-      <td class="thumbnail"><img src="/ACNH-dex/images/rosie.png" alt="Rosie"></td>
-      <td>Rosie</td>
-      <td>Cat</td>
-      <td>Peppy</td>
-      <td><label class="container">
-          <input type="checkbox" id="rosie">
-          <span class="checkmark"></span>
-        </label></td>
-    </tr>
     <tr>
       <td class="thumbnail"><img src="/ACNH-dex/images/apple.png" alt="Apple"></td>
       <td>Apple</td>
       <td>Hamster</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="apple">
+          <input type="checkbox" name="showHide" id="apple">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2957,7 +2979,7 @@
       <td>Ostrich</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="flora">
+          <input type="checkbox" name="showHide" id="flora">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2967,7 +2989,7 @@
       <td>Bearcub</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="bluebear">
+          <input type="checkbox" name="showHide" id="bluebear">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2977,7 +2999,7 @@
       <td>Rabbit</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="ruby">
+          <input type="checkbox" name="showHide" id="ruby">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2987,7 +3009,7 @@
       <td>Dog</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="cookie">
+          <input type="checkbox" name="showHide" id="cookie">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -2997,7 +3019,7 @@
       <td>Penguin</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="sprinkle">
+          <input type="checkbox" name="showHide" id="sprinkle">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3007,7 +3029,7 @@
       <td>Rabbit</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="chrissy">
+          <input type="checkbox" name="showHide" id="chrissy">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3017,7 +3039,7 @@
       <td>Rabbit</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="bunnie">
+          <input type="checkbox" name="showHide" id="bunnie">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3027,7 +3049,7 @@
       <td>Squirrel</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="peanut">
+          <input type="checkbox" name="showHide" id="peanut">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3037,7 +3059,7 @@
       <td>Tiger</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="bianca">
+          <input type="checkbox" name="showHide" id="bianca">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3047,7 +3069,7 @@
       <td>Bearcub</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="cheri">
+          <input type="checkbox" name="showHide" id="cheri">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3057,7 +3079,7 @@
       <td>Rabbit</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="dotty">
+          <input type="checkbox" name="showHide" id="dotty">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3067,7 +3089,7 @@
       <td>Dog</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="maddie">
+          <input type="checkbox" name="showHide" id="maddie">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3077,7 +3099,7 @@
       <td>Anteater</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="anabelle">
+          <input type="checkbox" name="showHide" id="anabelle">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3087,7 +3109,7 @@
       <td>Bear</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="tutu">
+          <input type="checkbox" name="showHide" id="tutu">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3097,7 +3119,7 @@
       <td>Sheep</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="wendy">
+          <input type="checkbox" name="showHide" id="wendy">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3107,7 +3129,7 @@
       <td>Squirrel</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="agents">
+          <input type="checkbox" name="showHide" id="agents">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3117,7 +3139,7 @@
       <td>Tiger</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="bangle">
+          <input type="checkbox" name="showHide" id="bangle">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3127,7 +3149,7 @@
       <td>Frog</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="puddles">
+          <input type="checkbox" name="showHide" id="puddles">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3137,7 +3159,7 @@
       <td>Rabbit</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="carmen">
+          <input type="checkbox" name="showHide" id="carmen">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3147,7 +3169,7 @@
       <td>Cat</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="felicity">
+          <input type="checkbox" name="showHide" id="felicity">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3157,7 +3179,7 @@
       <td>Duck</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="pompom">
+          <input type="checkbox" name="showHide" id="pompom">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3167,7 +3189,7 @@
       <td>Duck</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="freckles">
+          <input type="checkbox" name="showHide" id="freckles">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3177,7 +3199,7 @@
       <td>Bird</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="twiggy">
+          <input type="checkbox" name="showHide" id="twiggy">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3187,7 +3209,7 @@
       <td>Hippo</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="bubbles">
+          <input type="checkbox" name="showHide" id="bubbles">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3197,7 +3219,7 @@
       <td>Cow</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="patty">
+          <input type="checkbox" name="showHide" id="patty">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3207,7 +3229,7 @@
       <td>Mouse</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="bella">
+          <input type="checkbox" name="showHide" id="bella">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3217,7 +3239,7 @@
       <td>Cat</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="tabby">
+          <input type="checkbox" name="showHide" id="tabby">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3227,7 +3249,7 @@
       <td>Squirrel</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="nibbles">
+          <input type="checkbox" name="showHide" id="nibbles">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3237,7 +3259,7 @@
       <td>Duck</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="pate">
+          <input type="checkbox" name="showHide" id="pate">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3247,7 +3269,7 @@
       <td>Bear</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="pinky">
+          <input type="checkbox" name="showHide" id="pinky">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3257,7 +3279,7 @@
       <td>Rabbit</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="bonbon">
+          <input type="checkbox" name="showHide" id="bonbon">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3267,7 +3289,7 @@
       <td>Anteater</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="pango">
+          <input type="checkbox" name="showHide" id="pango">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3277,7 +3299,7 @@
       <td>Bird</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="piper">
+          <input type="checkbox" name="showHide" id="piper">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3287,7 +3309,7 @@
       <td>Mouse</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="anicotti">
+          <input type="checkbox" name="showHide" id="anicotti">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3297,7 +3319,7 @@
       <td>Rabbit</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="gabi">
+          <input type="checkbox" name="showHide" id="gabi">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3307,7 +3329,7 @@
       <td>Rabbit</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="pippy">
+          <input type="checkbox" name="showHide" id="pippy">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3317,7 +3339,7 @@
       <td>Mouse</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="penelope">
+          <input type="checkbox" name="showHide" id="penelope">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3327,7 +3349,7 @@
       <td>Horse</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="winnie">
+          <input type="checkbox" name="showHide" id="winnie">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3337,7 +3359,7 @@
       <td>Pig</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="peggy">
+          <input type="checkbox" name="showHide" id="peggy">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3347,7 +3369,7 @@
       <td>Horse</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="victoria">
+          <input type="checkbox" name="showHide" id="victoria">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3357,7 +3379,7 @@
       <td>Pig</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="truffles">
+          <input type="checkbox" name="showHide" id="truffles">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3367,7 +3389,7 @@
       <td>Monkey</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="tammi">
+          <input type="checkbox" name="showHide" id="tammi">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3377,7 +3399,7 @@
       <td>Mouse</td>
       <td>Peppy</td>
       <td><label class="container">
-          <input type="checkbox" id="candi">
+          <input type="checkbox" name="showHide" id="candi">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3387,7 +3409,7 @@
       <td>Bearcub</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="judy">
+          <input type="checkbox" name="showHide" id="judy">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3397,7 +3419,7 @@
       <td>Cat</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="ankha">
+          <input type="checkbox" name="showHide" id="ankha">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3407,7 +3429,7 @@
       <td>Deer</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="diana">
+          <input type="checkbox" name="showHide" id="diana">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3417,7 +3439,7 @@
       <td>Wolf</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="whitney">
+          <input type="checkbox" name="showHide" id="whitney">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3427,7 +3449,7 @@
       <td>Rabbit</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="francine">
+          <input type="checkbox" name="showHide" id="francine">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3437,7 +3459,7 @@
       <td>Ostrich</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="julia">
+          <input type="checkbox" name="showHide" id="julia">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3447,7 +3469,7 @@
       <td>Cat</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="olivia">
+          <input type="checkbox" name="showHide" id="olivia">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3457,7 +3479,7 @@
       <td>Wolf</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="freya">
+          <input type="checkbox" name="showHide" id="freya">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3467,7 +3489,7 @@
       <td>Wolf</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="vivian">
+          <input type="checkbox" name="showHide" id="vivian">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3477,7 +3499,7 @@
       <td>Cat</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="purrl">
+          <input type="checkbox" name="showHide" id="purrl">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3487,7 +3509,7 @@
       <td>Eagle</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="amelia">
+          <input type="checkbox" name="showHide" id="amelia">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3497,7 +3519,7 @@
       <td>Squirrel</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="tasha">
+          <input type="checkbox" name="showHide" id="tasha">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3507,7 +3529,7 @@
       <td>Squirrel</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="blaire">
+          <input type="checkbox" name="showHide" id="blaire">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3517,7 +3539,7 @@
       <td>Sheep</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="willow">
+          <input type="checkbox" name="showHide" id="willow">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3527,7 +3549,7 @@
       <td>Rabbit</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="tiffany">
+          <input type="checkbox" name="showHide" id="tiffany">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3537,7 +3559,7 @@
       <td>Ostrich</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="blanche">
+          <input type="checkbox" name="showHide" id="blanche">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3547,7 +3569,7 @@
       <td>Squirrel</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="pecan">
+          <input type="checkbox" name="showHide" id="pecan">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3557,7 +3579,7 @@
       <td>Dog</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="portia">
+          <input type="checkbox" name="showHide" id="portia">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3567,7 +3589,7 @@
       <td>Squirrel</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="mint">
+          <input type="checkbox" name="showHide" id="mint">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3577,7 +3599,7 @@
       <td>Cow</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="tipper">
+          <input type="checkbox" name="showHide" id="tipper">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3587,7 +3609,7 @@
       <td>Elephant</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="eloise">
+          <input type="checkbox" name="showHide" id="eloise">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3597,7 +3619,7 @@
       <td>Tiger</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="claudia">
+          <input type="checkbox" name="showHide" id="claudia">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3607,7 +3629,7 @@
       <td>Koala</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="yuka">
+          <input type="checkbox" name="showHide" id="yuka">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3617,7 +3639,7 @@
       <td>Elephant</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="opal">
+          <input type="checkbox" name="showHide" id="opal">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3627,7 +3649,7 @@
       <td>Sheep</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="baabara">
+          <input type="checkbox" name="showHide" id="baabara">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3637,7 +3659,7 @@
       <td>Kangaroo</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="mathilda">
+          <input type="checkbox" name="showHide" id="mathilda">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3647,7 +3669,7 @@
       <td>Pig</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="pancetti">
+          <input type="checkbox" name="showHide" id="pancetti">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3657,7 +3679,7 @@
       <td>Kangaroo</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="astrid">
+          <input type="checkbox" name="showHide" id="astrid">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3667,7 +3689,7 @@
       <td>Cat</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="monique">
+          <input type="checkbox" name="showHide" id="monique">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3677,7 +3699,7 @@
       <td>Alligator</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="alli">
+          <input type="checkbox" name="showHide" id="alli">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3687,7 +3709,7 @@
       <td>Ostrich</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="queenie">
+          <input type="checkbox" name="showHide" id="queenie">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3697,7 +3719,7 @@
       <td>Cow</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="naomi">
+          <input type="checkbox" name="showHide" id="naomi">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3707,7 +3729,7 @@
       <td>Chicken</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="becky">
+          <input type="checkbox" name="showHide" id="becky">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3717,7 +3739,7 @@
       <td>Bird</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="robin">
+          <input type="checkbox" name="showHide" id="robin">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3727,7 +3749,7 @@
       <td>Hippo</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="bitty">
+          <input type="checkbox" name="showHide" id="bitty">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3737,7 +3759,7 @@
       <td>Duck</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="gwen">
+          <input type="checkbox" name="showHide" id="gwen">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3747,7 +3769,7 @@
       <td>Frog</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="gigi">
+          <input type="checkbox" name="showHide" id="gigi">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3757,7 +3779,7 @@
       <td>Sheep</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="timbra">
+          <input type="checkbox" name="showHide" id="timbra">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3767,7 +3789,7 @@
       <td>Penguin</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="friga">
+          <input type="checkbox" name="showHide" id="friga">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3777,7 +3799,7 @@
       <td>Goat</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="velma">
+          <input type="checkbox" name="showHide" id="velma">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3787,7 +3809,7 @@
       <td>Sheep</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="cashmere">
+          <input type="checkbox" name="showHide" id="cashmere">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3797,7 +3819,7 @@
       <td>Duck</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="mallary">
+          <input type="checkbox" name="showHide" id="mallary">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3807,7 +3829,7 @@
       <td>Horse</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="annalise">
+          <input type="checkbox" name="showHide" id="annalise">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3817,7 +3839,7 @@
       <td>Horse</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="cleo">
+          <input type="checkbox" name="showHide" id="cleo">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3827,7 +3849,7 @@
       <td>Hamster</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="soleil">
+          <input type="checkbox" name="showHide" id="soleil">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3837,7 +3859,7 @@
       <td>Gorilla</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="violet">
+          <input type="checkbox" name="showHide" id="violet">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3847,7 +3869,7 @@
       <td>Monkey</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="elise">
+          <input type="checkbox" name="showHide" id="elise">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3857,7 +3879,7 @@
       <td>Duck</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="maelle">
+          <input type="checkbox" name="showHide" id="maelle">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3867,7 +3889,7 @@
       <td>Cat</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="kitty">
+          <input type="checkbox" name="showHide" id="kitty">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3877,7 +3899,7 @@
       <td>Duck</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="gloria">
+          <input type="checkbox" name="showHide" id="gloria">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3887,7 +3909,7 @@
       <td>Duck</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="miranda">
+          <input type="checkbox" name="showHide" id="miranda">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3897,7 +3919,7 @@
       <td>Mouse</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="greta">
+          <input type="checkbox" name="showHide" id="greta">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3907,7 +3929,7 @@
       <td>Chicken</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="broffina">
+          <input type="checkbox" name="showHide" id="broffina">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3917,7 +3939,7 @@
       <td>Anteater</td>
       <td>Snooty</td>
       <td><label class="container">
-          <input type="checkbox" id="snooty">
+          <input type="checkbox" name="showHide" id="snooty">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3927,7 +3949,7 @@
       <td>Dog</td>
       <td>Sisterly</td>
       <td><label class="container">
-          <input type="checkbox" id="cherry">
+          <input type="checkbox" name="showHide" id="cherry">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3937,7 +3959,7 @@
       <td>Goat</td>
       <td>Sisterly</td>
       <td><label class="container">
-          <input type="checkbox" id="pashmina">
+          <input type="checkbox" name="showHide" id="pashmina">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3947,7 +3969,7 @@
       <td>Sheep</td>
       <td>Sisterly</td>
       <td><label class="container">
-          <input type="checkbox" id="muffy">
+          <input type="checkbox" name="showHide" id="muffy">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3957,7 +3979,7 @@
       <td>Pig</td>
       <td>Sisterly</td>
       <td><label class="container">
-          <input type="checkbox" id="agnes">
+          <input type="checkbox" name="showHide" id="agnes">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3967,7 +3989,7 @@
       <td>Ostrich</td>
       <td>Sisterly</td>
       <td><label class="container">
-          <input type="checkbox" id="phoebe">
+          <input type="checkbox" name="showHide" id="phoebe">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3977,7 +3999,7 @@
       <td>Horse</td>
       <td>Sisterly</td>
       <td><label class="container">
-          <input type="checkbox" id="reneigh">
+          <input type="checkbox" name="showHide" id="reneigh">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3987,7 +4009,7 @@
       <td>Deer</td>
       <td>Sisterly</td>
       <td><label class="container">
-          <input type="checkbox" id="fuchsia">
+          <input type="checkbox" name="showHide" id="fuchsia">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -3997,7 +4019,7 @@
       <td>Deer</td>
       <td>Sisterly</td>
       <td><label class="container">
-          <input type="checkbox" id="deirdre">
+          <input type="checkbox" name="showHide" id="deirdre">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -4007,7 +4029,7 @@
       <td>Squirrel</td>
       <td>Sisterly</td>
       <td><label class="container">
-          <input type="checkbox" id="hazel">
+          <input type="checkbox" name="showHide" id="hazel">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -4017,7 +4039,7 @@
       <td>Rabbit</td>
       <td>Sisterly</td>
       <td><label class="container">
-          <input type="checkbox" id="mira">
+          <input type="checkbox" name="showHide" id="mira">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -4027,7 +4049,7 @@
       <td>Sheep</td>
       <td>Sisterly</td>
       <td><label class="container">
-          <input type="checkbox" id="frita">
+          <input type="checkbox" name="showHide" id="frita">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -4037,7 +4059,7 @@
       <td>Monkey</td>
       <td>Sisterly</td>
       <td><label class="container">
-          <input type="checkbox" id="shari">
+          <input type="checkbox" name="showHide" id="shari">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -4047,7 +4069,7 @@
       <td>Penguin</td>
       <td>Sisterly</td>
       <td><label class="container">
-          <input type="checkbox" id="flo">
+          <input type="checkbox" name="showHide" id="flo">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -4057,7 +4079,7 @@
       <td>Bearcub</td>
       <td>Sisterly</td>
       <td><label class="container">
-          <input type="checkbox" id="tammy">
+          <input type="checkbox" name="showHide" id="tammy">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -4067,7 +4089,7 @@
       <td>Koala</td>
       <td>Sisterly</td>
       <td><label class="container">
-          <input type="checkbox" id="canberra">
+          <input type="checkbox" name="showHide" id="canberra">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -4077,7 +4099,7 @@
       <td>Bear</td>
       <td>Sisterly</td>
       <td><label class="container">
-          <input type="checkbox" id="ursala">
+          <input type="checkbox" name="showHide" id="ursala">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -4087,7 +4109,7 @@
       <td>Rhino</td>
       <td>Sisterly</td>
       <td><label class="container">
-          <input type="checkbox" id="renee">
+          <input type="checkbox" name="showHide" id="renee">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -4097,7 +4119,7 @@
       <td>Frog</td>
       <td>Sisterly</td>
       <td><label class="container">
-          <input type="checkbox" id="diva">
+          <input type="checkbox" name="showHide" id="diva">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -4107,7 +4129,7 @@
       <td>Chicken</td>
       <td>Sisterly</td>
       <td><label class="container">
-          <input type="checkbox" id="plucky">
+          <input type="checkbox" name="showHide" id="plucky">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -4117,7 +4139,7 @@
       <td>Kangaroo</td>
       <td>Sisterly</td>
       <td><label class="container">
-          <input type="checkbox" id="sylvia">
+          <input type="checkbox" name="showHide" id="sylvia">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -4127,7 +4149,7 @@
       <td>Gorilla</td>
       <td>Sisterly</td>
       <td><label class="container">
-          <input type="checkbox" id="rocket">
+          <input type="checkbox" name="showHide" id="rocket">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -4137,7 +4159,7 @@
       <td>Bear</td>
       <td>Sisterly</td>
       <td><label class="container">
-          <input type="checkbox" id="paula">
+          <input type="checkbox" name="showHide" id="paula">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -4147,7 +4169,7 @@
       <td>Bear</td>
       <td>Sisterly</td>
       <td><label class="container">
-          <input type="checkbox" id="charlise">
+          <input type="checkbox" name="showHide" id="charlise">
           <span class="checkmark"></span>
         </label></td>
     </tr>
@@ -4157,7 +4179,7 @@
       <td>Deer</td>
       <td>Smug</td>
       <td><label class="container">
-          <input type="checkbox" id="zeel">
+          <input type="checkbox" name="showHide" id="zeel">
           <span class="checkmark"></span>
         </label></td>
     </tr>
