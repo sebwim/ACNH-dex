@@ -203,20 +203,6 @@
   </script>
   <!-- Hide function -->
   <script>
-    /*  function hideChecked() {
-      var hideTable = document.getElementById("acnh-villagers");
-      var hideRows = hideTable.getElementsByTagName("tr");
-
-      for (var i = 0; i < hideRows.length; i++) {
-        var hideCheckboxes = hideRows[i].getElementsByTagName("input");
-        for (var j = 0; j < hideCheckboxes.length; j++) {
-          if (hideCheckboxes.checked) {
-            hideRows[i].style.display = "none";
-          }
-          break;
-        }
-      }
-    } */
     function hideSelected() {
       var oTable = document.getElementById("acnh-villagers");
       var oRows = oTable.getElementsByTagName("tr");
@@ -226,6 +212,25 @@
         for (var j = 0; j < oInputs.length; j++) {
           if (oInputs[j].name == "showHide") {
             if (oInputs[j].checked) {
+              oRows[i].style.display = "none";
+            }
+            break;
+          }
+        }
+      }
+
+    }
+    function hideUnchecked() {
+      var oTable = document.getElementById("acnh-villagers");
+      var oRows = oTable.getElementsByTagName("tr");
+
+      for (var i = 0; i < oRows.length; i++) {
+        var oInputs = oRows[i].getElementsByTagName("input");
+        for (var j = 0; j < oInputs.length; j++) {
+          if (oInputs[j].name == "showHide") {
+            if (oInputs[j].checked) {
+            }
+            else {
               oRows[i].style.display = "none";
             }
             break;
@@ -254,8 +259,9 @@
   <span>
     <p id="counter"></p>
     <input type="text" id="search" onkeyup="searchFunction()" placeholder="Search for villagers...">
-    <input type="button" id="deletebutton" value="restart" onclick="del()" />
-    <input type="button" value="Hide checked" onclick="hideSelected();" /><input type="button" value="Show All" onclick="showAll();" />
+    <input type="button" value="Hide checked" onclick="hideSelected();" />
+    <input type="button" value="Hide unchecked" onclick="hideUnchecked();" />
+    <input type="button" value="Show All" onclick="showAll();" />
   </span>
 
   <table id="acnh-villagers">
@@ -4186,6 +4192,8 @@
 
   </table>
   <br>
+      <input type="button" id="deletebutton" value="restart" onclick="del()" />
+      <br>
 
   <footer>Search Icon made by <a href="https://www.flaticon.com/authors/those-icons" title="Those Icons">Those Icons</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></footer>
 
