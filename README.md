@@ -15,3 +15,4 @@ To-Do:
 
 Bugs:
 - If villagers are hidden using the "Hide checked" button, then the alternating background colours for the rows gets messed up
+
