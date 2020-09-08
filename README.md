@@ -12,7 +12,7 @@ To-Do:
 - Add checkboxes in the table for: Villager in town, seen on campsite, received picture.
 - Find a better Search icon
 - Filters: Show/Hide Personality, Show/Hide species
+- Move away from localStorage, so your dex isn't locked to one device
 
 Bugs:
 - If villagers are hidden using the "Hide checked" button, then the alternating background colours for the rows gets messed up
-
