@@ -66,8 +66,8 @@ border-width: 0 3px 3px 0;
 transform: rotate(45deg);
 }
 
-/*All buttons */
-.button {
+/*Custom filter buttons */
+.filter {
   background-color: #12970A; /* Green */
   border: none;
   color: #FBFF00;
