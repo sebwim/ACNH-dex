@@ -257,11 +257,13 @@
 <body onload="save(); calculate();">
 
   <span>
-    <p id="counter"></p>
     <input type="text" id="search" onkeyup="searchFunction()" placeholder="Search for villagers...">
-    <label class="filter"><input type="button" value="Hide checked" onclick="hideSelected();" /></label>
-    <label class="filter"><input type="button" value="Hide unchecked" onclick="hideUnchecked();" /></label>
-    <label class="filter"><input type="button" value="Show All" onclick="showAll();" /></label>
+    <br>
+    <input class="button" type="button" value="Hide checked" onclick="hideSelected();" /></label>
+    <input class="button" type="button" value="Hide unchecked" onclick="hideUnchecked();" /></label>
+    <input class="button" type="button" value="Show All" onclick="showAll();" />
+    <br>
+    <p id="counter"></p>
   </span>
 
   <table id="acnh-villagers">
@@ -4184,7 +4186,7 @@
     </tr>
   </table>
   <br>
-  <input type="button" id="deletebutton" value="restart" onclick="del()" />
+  <input class ="restart" type="button" id="deletebutton" value="restart" onclick="del()" />
   <br>
 
   <footer>Search Icon made by <a href="https://www.flaticon.com/authors/those-icons" title="Those Icons">Those Icons</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></footer>
